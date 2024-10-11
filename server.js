@@ -4,7 +4,7 @@ const app = express();
 
 app.use(express.static('public'));
 
-app.get('default.html',(req,res)=>{
+app.get('/default',(req,res)=>{
     res.sendFile(path.join(__dirname,'public/default/default.html'));
 })
 

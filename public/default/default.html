@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML with Query Parameters from Original Request</title>
+</head>
+<body>
+    <h1>HTML Page with JSON and Query Parameters</h1>
+    <div id="jsonData"></div>
+
+    <script>
+        // função que separa os parametros query da pagina
+        function getQueryParams() {
+            const urlParams = new URLSearchParams(window.location.search);
+            let query = {};
+            for (const [key, value] of urlParams.entries()) {
+                query[key] = value;
+            }
+            return query;
+        }
+
+        // faz uma request para receber os parametros query em formato JSON
+        const queryParams = new URLSearchParams(window.location.search); // pega os parametros do link de busca
+        fetch('/data?' + queryParams.toString())
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('jsonData').innerHTML = JSON.stringify(data);
+            });
+    </script>
+</body>
+</html>

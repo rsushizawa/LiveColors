@@ -1,41 +1,82 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HTML with Query Parameters from Original Request</title>
+    <link rel="stylesheet" href="default.css">
 </head>
 <body>
-    <h1>HTML Page with JSON and Query Parameters</h1>
-    <div id="jsonData"> Update query</div>
-    <button onclick="updateQueryStringParameter('color', 'green')">Update</button>
-    <button onclick="getQueryParamsJSON()">Get</button>
-    <script>
-        // função que separa os parametros query da pagina
-        function getQueryParams() {
-            const urlParams = new URLSearchParams(window.location.search);
-            let query = {};
-            for (const [key, value] of urlParams.entries()) {
-                query[key] = value;
+    <footer class="menu" id="menu">
+        <img src="assets/logo.svg" alt="logo"> 
+        <div class="menu_right">
+            <a href="">One</a> 
+            <a href="">Two</a> 
+            <a href="">Three</a> 
+            <a href="">Four</a>
+            <button class="button_white">Button</button>
+            <button class="button_black">Button</button>
+        </div>
+    </footer>
+    <div class="edit" style="text-align:center">
+        <footer class="edit_hud" id="edit_hud">
+            <button class="select_window" id="select_window"><img class="select_window" src="assets/select_window.svg" alt="select_window"></button>
+            <button class="button2" id="font_color">Text</button>
+            <button class="background_color" id="background_color" style="width: 159px;">Background</button>
+            <button class="button2" id="primary_color">Primary</button>
+            <button class="secondary_color" id="secondary_color" style="width: 133px;">Secondary</button>
+            <button class="accent_color" id="accent_color" style="width: 106px;">Accent</button>
+            <button class="button1" id="dark_mode"><img class="dark_mode" src="assets/dark_mode.svg" alt="dark_mode"></button>
+            <button class="randomize" id="randomize" style="width: 80px;"><img class="randomize" src="assets/randomize.svg" alt="randomize"> <img src="assets/segment.svg" alt="segment"> <img class="arrow_top" src="assets/arrow_top.svg" alt="arrow_top"></button>
+            <button class="button1" id="undo"><img class="undo" src="assets/undo.svg" alt="undo"></button>
+            <button class="button1" id="redo"><img class="redo" src="assets/redo.svg" alt="redo"></button>
+            <button class="select_fonts" id="select_fonts" style="width: 92px;">Fonts</button>
+            <button class="button1" id="share"><img class="share" src="assets/share.svg" alt="share"></button>
+            <button class="button1" id="visibility"><img class="visibility" src="assets/visibility.svg" alt="visibility"></button>
+        </footer>
+    </div>
+    <div class="intro" id="intro">
+        <h2>Medium length hero headline goes here</h2>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet accusamus et maxime nostrum officia assumenda mollitia nam totam numquam libero est magnam ipsa sint, blanditiis animi tempora aut possimus iste.</p>
+        <button class="button_white">Button</button>
+        <button class="button_black">Button</button>
+    </div>
+    <div class="jsonData">
+        <h1>HTML Page with JSON and Query Parameters</h1>
+        <div id="jsonData"> Update query</div>
+        <button onclick="updateQueryStringParameter('color', 'green')">Update</button>
+        <button onclick="getQueryParamsJSON()">Get</button>
+        <script>
+            // função que separa os parametros query da pagina
+            function getQueryParams() {
+                const urlParams = new URLSearchParams(window.location.search);
+                let query = {};
+                for (const [key, value] of urlParams.entries()) {
+                    query[key] = value;
+                }
+                return query;
             }
-            return query;
-        }
-        //função que atualiza os parametros query sem recarrgar a pagina
-        function updateQueryStringParameter(paramName, paramValue) {
-            const url = new URL(window.location.href);
-            url.searchParams.set(paramName, paramValue);
-            window.history.pushState({}, '', url);
-        }
+            //função que atualiza os parametros query sem recarrgar a pagina
+            function updateQueryStringParameter(paramName, paramValue) {
+                const url = new URL(window.location.href);
+                url.searchParams.set(paramName, paramValue);
+                window.history.pushState({}, '', url);
+            }
 
-        // função que faz uma request para receber os parametros query em formato JSON
-        function getQueryParamsJSON(){
-            const queryParams = new URLSearchParams(window.location.search); // pega os parametros do link de busca
-            fetch('/data?' + queryParams.toString())
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById('jsonData').innerHTML = JSON.stringify(data);
-                });
-        }
-    </script>
+            // função que faz uma request para receber os parametros query em formato JSON
+            function getQueryParamsJSON(){
+                const queryParams = new URLSearchParams(window.location.search); // pega os parametros do link de busca
+                fetch('/data?' + queryParams.toString())
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById('jsonData').innerHTML = JSON.stringify(data);
+                    });
+            }
+        </script>
+    </div>
+
 </body>
-</html>
+</html>     

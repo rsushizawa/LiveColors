@@ -1,9 +1,19 @@
+* {
+    --font_color:rgb(238, 7, 7);
+    --background:rgb(41, 170, 110);
+    --primary: rgb(55, 6, 6);
+    --secondary: white;
+    --accent: rgb(174, 243, 211);
+    --font: ;
+}
+
 body {
-    background-color: black;
+    background-color: var(--background);
 }
 
 .menu {
-    background-color: white;
+    left: 0px;
+    background-color: var(--primary);
     position: fixed;
     top: 0%;
     height: 80px;
@@ -47,7 +57,7 @@ body {
 
 .menu img {
     margin-left: 50px;
-    margin-right: 70%;
+    margin-right: 60%;
 }
 
 .menu_right{
@@ -63,7 +73,7 @@ body {
 }
 
 .edit {
-    padding: 0 250px 0;
+    padding: 0 60px 0;
 }
 
 .edit_hud button, .edit_hud {
@@ -114,11 +124,11 @@ body {
     align-items: center;
 }
 
-.button1 {
+.button1, .dark_mode_button {
     width: 67px;
     margin-top: 15px;
 }
-.button2 {
+.font_color, .primary_color {
     width: 121px;
     margin-top: 15px;
 }
@@ -133,11 +143,11 @@ body {
 
 .intro {
     margin-left: 50px;
-    margin-top: 250px;
+    margin-top: 200px;
     justify-content: left;
     width: 509px;
     height: 560px;
-    color: whitesmoke;
+    color: var(--font_color);
     padding-left: 50px;
 }
 
@@ -152,7 +162,38 @@ body {
     font-size: 18px;
 }
 
+.dark_mode_button svg {
+    fill: black;
+}
 
+.dark_mode_button::before {
+    background-color: black;
+    fill: white;
+}
+.dark_mode_button::after {
+    background-color: white;
+    fill: black;
+}
+
+.font_color {
+    background-color: var(--font_color);
+}
+
+.background_color {
+    background-color: var(--background);
+}
+
+.primary_color {
+    background-color: var(--primary);
+}
+
+.secondary_color {
+    background-color: var(--secondary);
+}
+
+.accent_color {
+    background-color: var(--accent);
+}
 
 
 .edit_hud button {

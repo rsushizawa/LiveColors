@@ -1,0 +1,179 @@
+body {
+    background-color: black;
+}
+
+.menu {
+    background-color: white;
+    position: fixed;
+    top: 0%;
+    height: 80px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.button_white {
+    font-family: "Roboto", system-ui;
+    background-color: white;
+    font-weight: 600;
+    width: 96px;
+    height: 48px;
+    border-color: black;
+    border-width: 1px;
+    margin-right: 20px;
+}
+
+.button_black {
+    font-family: "Roboto", system-ui;
+    background-color: black;
+    color: white;
+    font-weight: 600;
+    width: 96px;
+    height: 48px;
+    border-color: white;
+    border-width: 1px;
+}
+
+.select_window {
+    background-color: rgb(29, 29, 29);
+}
+
+.menu {
+    display: flex;
+    margin: auto;
+    position: fixed;
+    justify-content: left;
+}
+
+.menu img {
+    margin-left: 50px;
+    margin-right: 70%;
+}
+
+.menu_right{
+    font-family: "Roboto", system-ui;
+    justify-content: right;
+    font-weight: 400;
+    font-size: 16px;
+}
+.menu_right a{
+    margin-right: 15px;
+    text-decoration: none;
+    color: black;
+}
+
+.edit {
+    padding: 0 250px 0;
+}
+
+.edit_hud button, .edit_hud {
+    border-radius: 6px;
+    border-style: none;
+}
+
+.edit_hud img {
+    margin-top: 5px;
+}
+
+.randomize {
+    margin-bottom: 5px;
+}
+
+.arrow_top {
+    margin-bottom: 15px;
+}
+
+.dark_mode {
+    padding-top: 3px;
+}
+
+.share {
+    padding-top: 4px;
+    padding-right: 3px;
+}
+
+.visibility {
+    padding-top: 4px;
+}
+
+.edit_hud button {
+    text-align: center;
+    margin: auto 8px auto;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.edit_hud {
+    background-color: gray;
+    position: fixed;
+    margin-top: 40%;
+    height: 78px;
+    width: 1379px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button1 {
+    width: 67px;
+    margin-top: 15px;
+}
+.button2 {
+    width: 121px;
+    margin-top: 15px;
+}
+
+.input__color {
+    width: 45px;
+    height: 45px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 5px 7px;
+}
+
+.input__color::-webkit-color-swatch {
+    border-radius: 100px;
+}
+
+.edit_hud button {
+    height: 67px;
+}
+
+body {
+    align-content: center;
+}
+
+.intro {
+    margin-left: 50px;
+    margin-top: 250px;
+    justify-content: left;
+    width: 509px;
+    height: 560px;
+    color: whitesmoke;
+    padding-left: 50px;
+}
+
+.intro h2 {
+    font-family: "Roboto", system-ui;
+    font-weight: 700;
+    font-size: 56px;
+}
+.intro p {
+    font-family: "Roboto", system-ui;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+
+
+
+.edit_hud button {
+    height: 67px;
+}
+
+.jsonData {
+    margin-top: 600px;
+    background-color: white;
+}

@@ -47,8 +47,9 @@
     <div class="jsonData">
         <h1>HTML Page with JSON and Query Parameters</h1>
         <div id="jsonData"> Update query</div>
-        <button onclick="updateQueryStringParameter('color', 'green')">Update</button>
+        <button onclick="updateQueryStringParameter('colors', 'green')">Update</button>
         <button onclick="getQueryParamsJSON()">Get</button>
+        <button onclick="console.log(getColors())">colorsList</button>
         <script>
             // função que separa os parametros query da pagina
             function getQueryParams() {
@@ -59,6 +60,31 @@
                 }
                 return query;
             }
+
+            // função que organiza as cores do query
+            function getColors(){
+                let data = getQueryParams()
+                console.log(data.colors)
+                let colors = []
+                let builder = ''
+                for( let i = 0; i<=data.colors.length;i++){
+                    if(data.colors[i]=='-' || i == data.colors.length){
+                        colors.push(builder)
+                        builder = ''
+                    } else {
+                        builder += data.colors[i]
+                    }
+                }
+
+                return {
+                    text: `${colors[0]}`,
+                    background: `${colors[1]}`,
+                    primary: `${colors[2]}`,
+                    secondary: `${colors[3]}`,
+                    accent: `${colors[4]}`
+                }
+            }
+
             //função que atualiza os parametros query sem recarrgar a pagina
             function updateQueryStringParameter(paramName, paramValue) {
                 const url = new URL(window.location.href);

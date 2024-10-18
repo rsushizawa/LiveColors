@@ -1,10 +1,11 @@
 * {
-    --font_color:rgb(238, 7, 7);
-    --background:rgb(41, 170, 110);
-    --primary: rgb(55, 6, 6);
-    --secondary: white;
+    --font_color:rgb(255, 255, 255);
+    --background:rgb(0, 0, 0);
+    --primary: rgb(248, 84, 84);
+    --secondary: rgba(0, 255, 8, 0.692);
     --accent: rgb(174, 243, 211);
-    --font: ;
+    --font_heading: "Roboto", system-ui;
+    --font_body: "Arial", system-ui;
 }
 
 body {
@@ -22,9 +23,9 @@ body {
     justify-content: center;
 }
 
-.button_white {
-    font-family: "Roboto", system-ui;
-    background-color: white;
+.button_primary, .button_intro1 {
+    font-family: var(--font_body);
+    background-color: var(--primary);
     font-weight: 600;
     width: 96px;
     height: 48px;
@@ -33,9 +34,9 @@ body {
     margin-right: 20px;
 }
 
-.button_black {
-    font-family: "Roboto", system-ui;
-    background-color: black;
+.button_secondary, .button_intro2 {
+    font-family: var(--font_body);
+    background-color: var(--secondary);
     color: white;
     font-weight: 600;
     width: 96px;
@@ -44,7 +45,12 @@ body {
     border-width: 1px;
 }
 
+.select_fonts {
+    font-family: var(--font_body);
+}
+
 .select_window {
+    width: 100px;
     background-color: rgb(29, 29, 29);
 }
 
@@ -61,7 +67,7 @@ body {
 }
 
 .menu_right{
-    font-family: "Roboto", system-ui;
+    font-family: var(--font_body);
     justify-content: right;
     font-weight: 400;
     font-size: 16px;
@@ -141,38 +147,63 @@ body {
     align-content: center;
 }
 
+.intro2 {
+    display: flex;
+}
+
+.palette {
+    margin-top: 200px;
+    margin-left: 200px;
+}
+
+.button_intro1 {
+    margin-top: 10px;
+    margin-left: 25px;
+}
+
 .intro {
+    
+    border-radius: 15px;
     margin-left: 50px;
     margin-top: 200px;
     justify-content: left;
-    width: 509px;
-    height: 560px;
+    width: 700px;
+    height: 450px;
     color: var(--font_color);
     padding-left: 50px;
+    background-color: var(--primary);
+    
+}
+
+.palette {
+    width: 400px;
+}
+
+
+
+.intro h2, .intro p {
+    padding-left: 25px;
+    width: 600px;
 }
 
 .intro h2 {
-    font-family: "Roboto", system-ui;
+    padding-top: 25px;
+    font-family: var(--font_heading);
     font-weight: 700;
     font-size: 56px;
 }
 .intro p {
-    font-family: "Roboto", system-ui;
+    font-family: var(--font_body);
     font-weight: 400;
     font-size: 18px;
 }
 
-.dark_mode_button svg {
-    fill: black;
+.dark_mode {
+    margin-top: 4px;
 }
 
-.dark_mode_button::before {
-    background-color: black;
-    fill: white;
-}
 .dark_mode_button::after {
-    background-color: white;
-    fill: black;
+    background-color: black;
 }
 
 .font_color {

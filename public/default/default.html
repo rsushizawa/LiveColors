@@ -86,13 +86,11 @@
         inputCor.click();
         inputCor.addEventListener('input', function() {
             var color = inputCor.value;
-            botao.style.backgroundColor = color;
-            //atualiza a variável do CSS
-            
             //joga na url a cor selecionada
             updateColorsQueryParam(key, `${color}`);
-            updateCSSVar(key);
-        });                
+            // atualiza css
+            updateCSSColorVar()  
+        });             
     }
 
     // função que separa os parametros query da pagina
@@ -153,7 +151,8 @@
         window.history.pushState({}, '', url);
     }
 
-    function updateCSSVar(){
+    // função de atualizar que atualiza as variáveis de cor do CSS
+    function updateCSSColorVar(){
         const colors = getColors()
         const colorObj = {
             Text: `${colors[0]}`,

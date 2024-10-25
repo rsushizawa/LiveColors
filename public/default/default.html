@@ -75,81 +75,102 @@
             </svg>
         </div>
     </div>
-
-    <div class="jsonData">
-        <h1>HTML Page with JSON and Query Parameters</h1>
-        <div id="jsonData"> Update query</div>
-        <button onclick="updateQueryStringParameter('colors', 'green')">Update</button>
-        <button onclick="getQueryParamsJSON()">Get</button>
-        <button onclick="console.log(getColors())">colorsList</button>
-        <script>
-            // Função dinâmica que abre o seletor de cor e altera a cor do botão
-            function abrirSeletorCor(idBotao, idInputCor) {
-                const inputCor = document.getElementById(idInputCor);
-                const botao = document.getElementById(idBotao);
-                var key = botao.innerText;
-                // Simula o clique no input de cor
-                inputCor.click();
-                inputCor.addEventListener('input', function() {
-                    var color = inputCor.value
-                    botao.style.backgroundColor = color;
-                    //joga na url a cor selecionada
-                    updateQueryStringParameter(key, color)
-                });                
-            }
-
-            // função que separa os parametros query da pagina
-            function getQueryParams() {
-                const urlParams = new URLSearchParams(window.location.search);
-                let query = {};
-                for (const [key, value] of urlParams.entries()) {
-                    query[key] = value;
-                }
-                return query;
-            }
-
-            // função que organiza as cores do query
-            function getColors(){
-                let data = getQueryParams()
-                console.log(data.colors)
-                let colors = []
-                let builder = ''
-                for( let i = 0; i<=data.colors.length;i++){
-                    if(data.colors[i]=='-' || i == data.colors.length){
-                        colors.push(builder)
-                        builder = ''
-                    } else {
-                        builder += data.colors[i]
-                    }
-                }
-
-                return {
-                    text: `${colors[0]}`,
-                    background: `${colors[1]}`,
-                    primary: `${colors[2]}`,
-                    secondary: `${colors[3]}`,
-                    accent: `${colors[4]}`
-                }
-            }
-
-            //função que atualiza os parametros query sem recarregar a pagina
-            function updateQueryStringParameter(paramName, paramValue) {
-                const url = new URL(window.location.href);
-                url.searchParams.set(paramName, paramValue);
-                window.history.pushState({}, '', url);
-            }
-
-            // função que faz uma request para receber os parametros query em formato JSON
-            function getQueryParamsJSON(){
-                const queryParams = new URLSearchParams(window.location.search); // pega os parametros do link de busca
-                fetch('/data?' + queryParams.toString())
-                    .then(response => response.json())
-                    .then(data => {
-                        document.getElementById('jsonData').innerHTML = JSON.stringify(data);
-                    });
-            }
-        </script>
-    </div>
-
 </body>
+<script>
+    // Função dinâmica que abre o seletor de cor e altera a cor do botão
+    function abrirSeletorCor(idBotao, idInputCor) {
+        const inputCor = document.getElementById(idInputCor);
+        const botao = document.getElementById(idBotao);
+        var key = botao.innerText;
+        // Simula o clique no input de cor
+        inputCor.click();
+        inputCor.addEventListener('input', function() {
+            var color = inputCor.value;
+            botao.style.backgroundColor = color;
+            //atualiza a variável do CSS
+            
+            //joga na url a cor selecionada
+            updateColorsQueryParam(key, `${color}`);
+            updateCSSVar(key);
+        });                
+    }
+
+    // função que separa os parametros query da pagina
+    function getQueryParams() {
+        const urlParams = new URLSearchParams(window.location.search);
+        let query = {};
+        for (const [key, value] of urlParams.entries()) {
+            query[key] = value;
+        }
+        return query;
+    }
+
+    // função que organiza as cores do getQueryParams()
+    function getColors(){
+        let data = getQueryParams()
+        console.log(data.colors)
+        let colors = []
+        let builder = ''
+        for( let i = 0; i<=data.colors.length;i++){
+            if(data.colors[i]=='-' || i == data.colors.length){
+                colors.push(builder)
+                builder = ''
+            } else {
+                builder += data.colors[i]
+            }
+        }
+
+        return colors;
+    }
+
+    //função que atualiza os parametro do Colors
+    function updateColorsQueryParam(paramName, paramValue) {
+        let colorsArray = getColors();
+        switch(paramName){
+            case 'Text':
+                colorsArray[0]=paramValue;
+                break;
+            case 'Background':
+                colorsArray[1]=paramValue;
+                break;
+            case 'Primary':
+                colorsArray[2]=paramValue;
+                break;
+            case 'Secondary':
+                colorsArray[3]=paramValue;
+                break;
+            case 'Accent':
+                colorsArray[4]=paramValue;
+                break;
+            default:
+                break;
+        }
+
+        let res = `${colorsArray[0]}-${colorsArray[1]}-${colorsArray[2]}-${colorsArray[3]}-${colorsArray[4]}`
+
+        const url = new URL(window.location.href);
+        url.searchParams.set('colors', res);
+        window.history.pushState({}, '', url);
+    }
+
+    function updateCSSVar(){
+        const colors = getColors()
+        const colorObj = {
+            Text: `${colors[0]}`,
+            Background: `${colors[1]}`,
+            Primary: `${colors[2]}`,
+            Secondary: `${colors[3]}`,
+            Accent: `${colors[4]}`
+        }
+        var r = document.querySelector(':root');
+        for (const key in colorObj) {
+            console.log(`--${key}`)
+            console.log(colorObj)
+            console.log(`${colorObj[key]}`)
+            if (colorObj.hasOwnProperty(key)) {
+                r.style.setProperty(`--${key}`, `${colorObj[key]}`);
+            }
+        }
+    }
+</script>
 </html>     

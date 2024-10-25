@@ -1,20 +1,20 @@
-* {
-    --font_color:rgb(255, 255, 255);
-    --background:rgb(0, 0, 0);
-    --primary: rgb(248, 84, 84);
-    --secondary: rgba(0, 255, 8, 0.692);
-    --accent: rgb(174, 243, 211);
+:root{
+    --Text:rgb(255, 255, 255);
+    --Background:rgb(0, 0, 0);
+    --Primary: rgb(248, 84, 84);
+    --Secondary: rgba(0, 255, 8, 0.692);
+    --Accent: rgb(174, 243, 211);
     --font_heading: "Roboto", system-ui;
     --font_body: "Arial", system-ui;
 }
 
 body {
-    background-color: var(--background);
+    background-color: var(--Background);
 }
 
 .menu {
     left: 0px;
-    background-color: var(--primary);
+    background-color: var(--Primary);
     position: fixed;
     top: 0%;
     height: 80px;
@@ -25,7 +25,7 @@ body {
 
 .button_primary, .button_intro1 {
     font-family: var(--font_body);
-    background-color: var(--primary);
+    background-color: var(--Primary);
     font-weight: 600;
     width: 96px;
     height: 48px;
@@ -36,7 +36,7 @@ body {
 
 .button_secondary, .button_intro2 {
     font-family: var(--font_body);
-    background-color: var(--secondary);
+    background-color: var(--Secondary);
     color: white;
     font-weight: 600;
     width: 96px;
@@ -170,9 +170,9 @@ body {
     justify-content: left;
     width: 700px;
     height: 450px;
-    color: var(--font_color);
+    color: var(--Text);
     padding-left: 50px;
-    background-color: var(--primary);
+    background-color: var(--Primary);
     
 }
 
@@ -208,23 +208,23 @@ body {
 }
 
 .font_color {
-    background-color: var(--font_color);
+    background-color: var(--Text);
 }
 
 .background_color {
-    background-color: var(--background);
+    background-color: var(--Background);
 }
 
 .primary_color {
-    background-color: var(--primary);
+    background-color: var(--Primary);
 }
 
 .secondary_color {
-    background-color: var(--secondary);
+    background-color: var(--Secondary);
 }
 
 .accent_color {
-    background-color: var(--accent);
+    background-color: var(--Accent);
 }
 
 

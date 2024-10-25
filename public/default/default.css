@@ -141,6 +141,7 @@ body {
 
 .edit_hud button {
     height: 67px;
+    cursor: pointer;
 }
 
 body {

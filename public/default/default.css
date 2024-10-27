@@ -1,6 +1,6 @@
 :root{
-    --Text:rgb(255, 255, 255);
-    --Background:rgb(0, 0, 0);
+    --Text:rgb(0, 0, 0);
+    --Background:rgb(255, 255, 255);
     --Primary: rgb(248, 84, 84);
     --Secondary: rgba(0, 255, 8, 0.692);
     --Accent: rgb(174, 243, 211);
@@ -79,7 +79,8 @@ body {
 }
 
 .edit {
-    padding: 0 60px 0;
+    display: flex;
+    justify-content: center;
 }
 
 .edit_hud button, .edit_hud {

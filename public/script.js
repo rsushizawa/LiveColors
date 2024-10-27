@@ -92,3 +92,6 @@ function updateCSSColorVar(){
         }
     }
 }
+
+updateColorsQueryParam()
+updateCSSColorVar()

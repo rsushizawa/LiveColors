@@ -123,6 +123,7 @@ body {
     background-color: gray;
     position: fixed;
     margin-top: 40%;
+    bottom: 50px;
     height: 78px;
     width: 1379px;
     display: flex;

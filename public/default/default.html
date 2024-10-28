@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="default.css">
 </head>
 <body>
-    <footer class="menu" id="menu">
+    <nav class="menu" id="menu">
         <img src="assets/logo.svg" alt="logo"> 
         <div class="menu_right">
             <a href="">One</a> 
@@ -20,7 +20,7 @@
             <button class="button_primary">Button</button>
             <button class="button_secondary">Button</button>
         </div>
-    </footer>
+    </nav>
     <div class="edit" style="text-align:center">
         <footer class="edit_hud" id="edit_hud">
             <button class="select_window" id="select_window"><img class="select_window_img" src="assets/select_window.svg" alt="select_window"></button>
@@ -54,30 +54,75 @@
     </div>
     <div class="intro2">
         <div class="intro" id="intro">
-            <h2>Medium length hero headline goes here</h2>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet accusamus et maxime nostrum officia assumenda mollitia nam totam numquam libero est magnam ipsa sint, blanditiis animi tempora aut possimus iste.</p>
+            <h2 class="medium">Medium length hero headline goes here</h2>
+            <p class="paragraph">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet accusamus et maxime nostrum officia assumenda mollitia nam totam numquam libero est magnam ipsa sint, blanditiis animi tempora aut possimus iste.</p>
             <button class="button_intro1">Button</button>
             <button class="button_intro2">Button</button>
         </div>
 
         <div class="palette">
             <svg width="400" height="459" viewBox="0 0 400 459" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M200 459L393.176 347.712C396.894 345.57 399.186 341.605 399.186 337.314V229.5V114.75L200 212V459Z" fill="var(--accent)"/>
+                <path d="M200 459L393.176 347.712C396.894 345.57 399.186 341.605 399.186 337.314V229.5V114.75L200 212V459Z" fill="var(--Accent)"/>
                 <path d="M200 459L393.176 347.712C396.894 345.57 399.186 341.605 399.186 337.314V229.5V114.75L200 212V459Z" fill="none" fill-opacity="0.2"/>
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M194.01 3.45094C197.718 1.31487 202.282 1.31487 205.99 3.45093L399.186 114.75L200 212L0.814148 114.75L194.01 3.45094Z" fill="var(--primary)"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M194.01 3.45094C197.718 1.31487 202.282 1.31487 205.99 3.45093L399.186 114.75L200 212L0.814148 114.75L194.01 3.45094Z" fill="var(--Primary)"/>
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M194.01 3.45094C197.718 1.31487 202.282 1.31487 205.99 3.45093L399.186 114.75L200 212L0.814148 114.75L194.01 3.45094Z" fill="none" fill-opacity="0.2"/>
-                <path d="M0.814148 337.314C0.814148 341.605 3.10562 345.57 6.82395 347.712L200 459V212L0.814148 114.75V337.314Z" fill="var(--secondary)"/>
+                <path d="M0.814148 337.314C0.814148 341.605 3.10562 345.57 6.82395 347.712L200 459V212L0.814148 114.75V337.314Z" fill="var(--Secondary)"/>
                 <path d="M0.814148 337.314C0.814148 341.605 3.10562 345.57 6.82395 347.712L200 459V212L0.814148 114.75V337.314Z" fill="none" fill-opacity="0.2"/>
-                <path d="M10.8141 130.761L190 218.246V441.698L11.8158 339.047C11.1961 338.69 10.8141 338.029 10.8141 337.314V130.761ZM200 200.872L22.1129 114.021L199.002 12.1159C199.62 11.7599 200.38 11.7599 200.998 12.1159L377.887 114.021L200 200.872ZM389.186 130.761V229.5V337.314C389.186 338.029 388.804 338.69 388.184 339.047L210 441.698V218.246L389.186 130.761Z" stroke="var(--font_color)" stroke-width="20"/>
+                <path d="M10.8141 130.761L190 218.246V441.698L11.8158 339.047C11.1961 338.69 10.8141 338.029 10.8141 337.314V130.761ZM200 200.872L22.1129 114.021L199.002 12.1159C199.62 11.7599 200.38 11.7599 200.998 12.1159L377.887 114.021L200 200.872ZM389.186 130.761V229.5V337.314C389.186 338.029 388.804 338.69 388.184 339.047L210 441.698V218.246L389.186 130.761Z" stroke="var(--Text)" stroke-width="20"/>
                 <path d="M314 158.197V292.663C314 293.37 313.627 294.024 313.02 294.384L201.02 360.771C200.391 361.143 199.609 361.143 198.98 360.771L86.9802 294.384C86.3726 294.024 86 293.37 86 292.663V159.337C86 158.63 86.3726 157.976 86.9802 157.616L198.98 91.2292C199.609 90.8565 200.391 90.8565 201.02 91.2292L314 158.197Z" fill="none"/>
-                <path d="M314 158.197V292.663C314 293.37 313.627 294.024 313.02 294.384L201.02 360.771C200.391 361.143 199.609 361.143 198.98 360.771L86.9802 294.384C86.3726 294.024 86 293.37 86 292.663V159.337C86 158.63 86.3726 157.976 86.9802 157.616L198.98 91.2292C199.609 90.8565 200.391 90.8565 201.02 91.2292L314 158.197Z" fill="var(--background)"/>
-                <path d="M314 158.197V292.663C314 293.37 313.627 294.024 313.02 294.384L201.02 360.771C200.391 361.143 199.609 361.143 198.98 360.771L86.9802 294.384C86.3726 294.024 86 293.37 86 292.663V159.337C86 158.63 86.3726 157.976 86.9802 157.616L198.98 91.2292C199.609 90.8565 200.391 90.8565 201.02 91.2292L314 158.197Z" stroke="var(--font_color)" stroke-width="20"/>
+                <path d="M314 158.197V292.663C314 293.37 313.627 294.024 313.02 294.384L201.02 360.771C200.391 361.143 199.609 361.143 198.98 360.771L86.9802 294.384C86.3726 294.024 86 293.37 86 292.663V159.337C86 158.63 86.3726 157.976 86.9802 157.616L198.98 91.2292C199.609 90.8565 200.391 90.8565 201.02 91.2292L314 158.197Z" fill="var(--Background)"/>
+                <path d="M314 158.197V292.663C314 293.37 313.627 294.024 313.02 294.384L201.02 360.771C200.391 361.143 199.609 361.143 198.98 360.771L86.9802 294.384C86.3726 294.024 86 293.37 86 292.663V159.337C86 158.63 86.3726 157.976 86.9802 157.616L198.98 91.2292C199.609 90.8565 200.391 90.8565 201.02 91.2292L314 158.197Z" stroke="var(--Text)" stroke-width="20"/>
             </svg>
         </div>
     </div>
-    <div>
-        
+    
+    <div class="more">
+        <p>More Sections</p>
     </div>
+
+    <div class="more">
+        <img src="" alt="arrow_bottom">
+    </div>
+
+    <section class="section">
+        <div class="section_left">
+            <img src="" alt="cube">
+            <h2 class="medium2">Medium length section heading goes here</h2>
+            <p class="paragraph2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas dicta, animi sint nisi ea quod, corporis itaque ratione in illum dolor hic nihil nulla velit maiores deserunt magni repellat. Quam.</p>
+            <button class="button_primary">Button</button>
+            <button class="button_secondary">Button</button>
+            <img src="" alt="arrow_left">
+        </div>
+        <div class="section_right">
+            <img src="assets/Placeholder Image.jpg" alt="img">
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section_left">
+            <p style="font-weight: 800; font-family: var(--font_heading);">Tagline</p>
+            <h2 class="medium2">Medium length section heading goes here</h2>
+            <p class="paragraph2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas dicta, animi sint nisi ea quod, corporis itaque ratione in illum dolor hic nihil nulla velit maiores deserunt magni repellat. Quam.</p>
+            <div class="half">
+                <div class="half1">
+                    <h4>50%</h4>
+                    <p class="paragraph2">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+                </div>
+                <div class="half2">
+                    <h4>50%</h4>
+                    <p class="paragraph2">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+                </div>
+            </div>
+            <button class="button_primary">Button</button>
+            <button class="button_secondary">Button</button>
+            <img src="" alt="arrow_left">
+        </div>
+        <div class="section_right">
+            <img src="assets/Placeholder Image.jpg" alt="img">
+        </div>
+    </section>
+    
+
 </body>
 <script src="/script.js"></script>
 </html>     

@@ -8,8 +8,65 @@
     --font_body: "Arial", system-ui;
 }
 
+
+
 body {
     background-color: var(--Background);
+    justify-items: center;
+}
+
+.more p {
+    padding-top: 20px;
+    color: var(--Text);
+}
+
+.more {
+    display: flex;
+    justify-content: center ;
+    font-family: var(--font_heading);
+}
+
+.half{
+    display: inline-flex;
+    
+}
+
+.half1 {
+    margin-right: 30px;
+}
+
+.half h4 {  
+    margin-top: 25px;
+    font-size: 45px;
+    font-family: var(--font_heading);
+    margin-bottom: 10px;
+}
+
+.half p {
+    font-size: 15px;
+    font-family: var(--font_body);
+    font-weight: 500;
+}
+
+
+.section {
+    margin-top: 120px;
+    display: inline-flex;
+    align-items: center;
+    justify-items: center;
+    width: 100%;
+    height: 900px;
+}
+
+.section_right {
+    width: 50%;
+}
+
+.section_left {
+    margin-top: 1%;
+    padding-left: 13%;
+    width: 600px;
+    margin-right: 15%;
 }
 
 .menu {
@@ -54,11 +111,15 @@ body {
     background-color: rgb(29, 29, 29);
 }
 
+
+
 .menu {
+    position: absolute;
     display: flex;
     margin: auto;
     position: fixed;
     justify-content: left;
+    
 }
 
 .menu img {
@@ -67,6 +128,9 @@ body {
 }
 
 .menu_right{
+    margin-left: 10%;
+    right: 2%;
+    position: relative;
     font-family: var(--font_body);
     justify-content: right;
     font-weight: 400;
@@ -79,8 +143,8 @@ body {
 }
 
 .edit {
-    display: flex;
     justify-content: center;
+    display: flex;
 }
 
 .edit_hud button, .edit_hud {
@@ -124,6 +188,7 @@ body {
     background-color: gray;
     position: fixed;
     margin-top: 40%;
+    bottom: 50px;
     height: 78px;
     width: 1379px;
     display: flex;
@@ -146,16 +211,20 @@ body {
 }
 
 body {
-    align-content: center;
+    justify-items: center;
 }
 
 .intro2 {
-    display: flex;
+    width: 100%;
+    display: inline-flex;
+    align-self: center;    
+    align-items: center;
+    justify-content: center;
 }
 
 .palette {
     margin-top: 200px;
-    margin-left: 200px;
+    margin-left: 20%;
 }
 
 .button_intro1 {
@@ -164,37 +233,44 @@ body {
 }
 
 .intro {
-    
     border-radius: 15px;
-    margin-left: 50px;
-    margin-top: 200px;
-    justify-content: left;
-    width: 700px;
+    margin-top: 150px;
+    width: 750px;
     height: 450px;
     color: var(--Text);
     padding-left: 50px;
+    padding-right: 50px;
     background-color: var(--Primary);
-    
 }
 
 .palette {
-    width: 400px;
+    margin-left: 35%;
 }
-
-
 
 .intro h2, .intro p {
     padding-left: 25px;
     width: 600px;
 }
 
-.intro h2 {
+.medium {
     padding-top: 25px;
     font-family: var(--font_heading);
     font-weight: 700;
     font-size: 56px;
 }
-.intro p {
+.paragraph {
+    font-family: var(--font_body);
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.medium2 {
+
+    font-family: var(--font_heading);
+    font-weight: 700;
+    font-size: 40px;
+}
+.paragraph2 {
     font-family: var(--font_body);
     font-weight: 400;
     font-size: 18px;

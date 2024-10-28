@@ -82,6 +82,13 @@ function updateCSSColorVar(){
         Secondary: `${colors[3]}`,
         Accent: `${colors[4]}`
     }
+
+    // Criando funçao para configurar o valor de uma variável de forma dinamica
+    function myFunction_set(nomeParametro,cor) {
+    // setando o valor da variavel  
+    r.style.setProperty(nomeParametro,cor);
+    }
+
     var r = document.querySelector(':root');
     for (const key in colorObj) {
         console.log(`--${key}`)

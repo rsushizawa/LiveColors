@@ -84,14 +84,124 @@ function updateCSSColorVar(){
     }
     var r = document.querySelector(':root');
     for (const key in colorObj) {
-        console.log(`--${key}`)
-        console.log(colorObj)
-        console.log(`${colorObj[key]}`)
         if (colorObj.hasOwnProperty(key)) {
             r.style.setProperty(`--${key}`, `${colorObj[key]}`);
         }
     }
 }
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+}
+
+function hslToHex(h, s, l) {
+    l /= 100;
+    const a = s * Math.min(l, 1 - l) / 100;
+    const f = n => {
+      const k = (n + h / 30) % 12;
+      const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+      return Math.round(255 * color).toString(16).padStart(2, '0');   // convert to Hex and prefix "0" if needed
+    };
+    return `#${f(0)}${f(8)}${f(4)}`;
+}
+
+function generateSplitComplementary(){
+    let Hue = getRandomInt(360)
+    let primary = Hue + 150
+    let secondary = Hue + 210
+
+    Hue = hslToHex(Hue,getRandomInt(100),getRandomInt(100))
+    primary = hslToHex(primary,getRandomInt(100),getRandomInt(100))
+    secondary = hslToHex(secondary,getRandomInt(100),getRandomInt(100))
+
+    let colorobj = {
+        Primary: primary,
+        Secondary: secondary,
+        Accent: Hue
+    }
+
+    for (const key in colorobj) {
+        if (colorobj.hasOwnProperty(key)) {
+            updateColorsQueryParam(`${key}`,`${colorobj[key]}`)
+        }
+    }
+
+    updateCSSColorVar()
+}
+
+function generateTriadic(){
+    let Hue = getRandomInt(360)
+    let primary = Hue + 120
+    let secondary = Hue + 240
+
+    Hue = hslToHex(Hue,getRandomInt(50),getRandomInt(50))
+    primary = hslToHex(primary,getRandomInt(50),getRandomInt(50))
+    secondary = hslToHex(secondary,getRandomInt(50),getRandomInt(50))
+
+    let colorobj = {
+        Primary: primary,
+        Secondary: secondary,
+        Accent: Hue
+    }
+
+    for (const key in colorobj) {
+        if (colorobj.hasOwnProperty(key)) {
+            updateColorsQueryParam(`${key}`,`${colorobj[key]}`)
+        }
+    }
+
+    updateCSSColorVar()
+}
+
+function generateTetradic(){
+    let Hue = getRandomInt(360)
+    let primary = Hue + 90
+    let secondary = Hue + 270
+
+    Hue = hslToHex(Hue,getRandomInt(100),getRandomInt(100))
+    primary = hslToHex(primary,getRandomInt(100),getRandomInt(100))
+    secondary = hslToHex(secondary,getRandomInt(100),getRandomInt(100))
+
+    let colorobj = {
+        Primary: primary,
+        Secondary: secondary,
+        Accent: Hue
+    }
+
+    for (const key in colorobj) {
+        if (colorobj.hasOwnProperty(key)) {
+            updateColorsQueryParam(`${key}`,`${colorobj[key]}`)
+        }
+    }
+
+    updateCSSColorVar()
+}
+
+function generateAnalagous(){
+    let Hue = getRandomInt(360)
+    let primary = Hue + 30
+    let secondary = Hue - 30
+
+    Hue = hslToHex(Hue,getRandomInt(100),getRandomInt(100))
+    primary = hslToHex(primary,getRandomInt(100),getRandomInt(100))
+    secondary = hslToHex(secondary,getRandomInt(100),getRandomInt(100))
+
+    let colorobj = {
+        Primary: primary,
+        Secondary: secondary,
+        Accent: Hue
+    }
+
+    for (const key in colorobj) {
+        if (colorobj.hasOwnProperty(key)) {
+            updateColorsQueryParam(`${key}`,`${colorobj[key]}`)
+        }
+    }
+
+    updateCSSColorVar()
+}
+
+  
 
 updateColorsQueryParam()
 updateCSSColorVar()

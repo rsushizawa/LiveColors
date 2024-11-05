@@ -117,9 +117,128 @@
             <button class="button_secondary">Button</button>
             <img src="" alt="arrow_left">
         </div>
-        <div class="section_right">
+        <div class="section_right" id="legal">
             <img src="assets/Placeholder Image.jpg" alt="img">
         </div>
+    </section>
+
+    <section class="pricing_plan">
+        <section class="plan_intro">
+            <p style="font-weight: 800; font-family: var(--font_heading);">Tagline</p>
+            <h2 class="medium2">Pricing Plan</h2>
+            <p class="paragraph2">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <script>
+                function toggleplan() {
+                var x = document.getElementById("monthly");
+                var y = document.getElementById("yearly");
+                if (x.innerHTML === document.getElementById("yearly")) {
+                    x.innerHTML = x;
+                } else {
+                    x.innerHTML = y;
+                }
+                }
+            </script>
+            <button onclick="toggleplan()">Monthly Yearly</button>
+        </section>
+
+        <section id="yearly">
+            <div class="row">
+                <div class="column">
+                    <p style="font-weight: 800; font-family: var(--font_heading); font-size: 16px;">Basic Plan</p>
+                    <p>Lorem ipsum, dolor sit amet</p>
+                    <hr>
+                    <h2 class="medium2">$180/yr</h2>
+                    <p style="font-weight: 800; font-family: var(--font_heading);">Save 20%</p>
+                    <button>Get started</button>
+                    <hr class="hr">
+                    <ul>
+                        <li>Feature text goes here</li>
+                        <li>Feature text goes here</li>
+                        <li>Feature text goes here</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <p style="font-weight: 800; font-family: var(--font_heading); font-size: 16px;">Business Plan</p>
+                    <p>Lorem ipsum, dolor sit amet</p>
+                    <hr>
+                    <h2 class="medium2">$280/yr</h2>
+                    <p style="font-weight: 800; font-family: var(--font_heading);">Save 20%</p>
+                    <button>Get started</button>
+                    <hr class="hr">
+                    <ul>
+                        <li>Feature text goes here</li>
+                        <li>Feature text goes here</li>
+                        <li>Feature text goes here</li>
+                        <li>Feature text goes here</li>
+                    </ul>
+                </div>
+
+                <div class="column">
+                    <p style="font-weight: 800; font-family: var(--font_heading); font-size: 16px;">Enterprise Plan</p>
+                    <p>Lorem ipsum, dolor sit amet</p>
+                    <hr>
+                    <h2 class="medium2">$480/yr</h2>
+                    <p style="font-weight: 800; font-family: var(--font_heading);">Save 20%</p>
+                    <button>Get started</button>
+                    <hr class="hr">
+                    <ul>
+                        <li>Feature text goes here</li>
+                        <li>Feature text goes here</li>
+                        <li>Feature text goes here</li>
+                        <li>Feature text goes here</li>
+                        <li>Feature text goes here</li>
+                    </ul>
+                </div>
+
+                        
+            </div>
+        </section>
+        <section id="monthly">
+            <div class="row">
+                <div class="column">
+                    <p style="font-weight: 800; font-family: var(--font_heading); font-size: 16px;">Basic Plan</p>
+                    <p>Lorem ipsum, dolor sit amet</p>
+                    <hr>
+                    <h2 class="medium2">$20/mo</h2>
+                    <button>Get started</button>
+                    <hr class="hr1">
+                    <ul>
+                        <li>Feature text goes here</li>
+                        <li>Feature text goes here</li>
+                        <li>Feature text goes here</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <p style="font-weight: 800; font-family: var(--font_heading); font-size: 16px;">Business Plan</p>
+                    <p>Lorem ipsum, dolor sit amet</p>
+                    <hr>
+                    <h2 class="medium2">$30/mo</h2>
+                    <button>Get started</button>
+                    <hr class="hr1">
+                    <ul>
+                        <li>Feature text goes here</li>
+                        <li>Feature text goes here</li>
+                        <li>Feature text goes here</li>
+                        <li>Feature text goes here</li>
+                    </ul>
+                </div>
+
+                <div class="column">
+                    <p style="font-weight: 800; font-family: var(--font_heading); font-size: 16px;">Enterprise Plan</p>
+                    <p>Lorem ipsum, dolor sit amet</p>
+                    <hr>
+                    <h2 class="medium2">$50/mo</h2>
+                    <button>Get started</button>
+                    <hr class="hr1">
+                    <ul>
+                        <li>Feature text goes here</li>
+                        <li>Feature text goes here</li>
+                        <li>Feature text goes here</li>
+                        <li>Feature text goes here</li>
+                        <li>Feature text goes here</li>
+                    </ul>
+                </div>
+        </section>
     </section>
 </body>
 <script src="/script.js"></script>

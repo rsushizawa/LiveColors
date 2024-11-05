@@ -10,10 +10,13 @@
 
 
 
+
 body {
     background-color: var(--Background);
+    justify-content: center;
     justify-items: center;
 }
+
 
 .more p {
     padding-top: 20px;
@@ -49,8 +52,11 @@ body {
 }
 
 
+
+
 .section {
     margin-top: 120px;
+    justify-content: center;
     display: inline-flex;
     align-items: center;
     justify-items: center;
@@ -308,6 +314,69 @@ body {
 .edit_hud button {
     height: 67px;
 }
+
+.plan_intro {
+    width: 100%;
+    justify-items: center;
+}
+
+.pricing_plan {
+    width: 100%;
+}
+
+.plan_intro 
+
+.yearly, .monthly {
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+}
+
+.row {
+    justify-content: center;
+    margin-top: 40px;
+    display: flex;
+    width: 100%;
+    
+}
+
+.column {
+    justify-content: center;
+    margin-left: 25px;
+    margin-right: 25px;
+    width: 300px;
+    height: 500px;
+    padding: 30px;
+    border: 1px solid black;
+    position: relative;
+}
+
+.column button {
+    justify-self: center;
+    position: absolute;
+    width: 85%;
+    height: 40px;
+    margin-top: 10px;
+}
+
+.hr {
+    margin-top: 90px;
+}
+
+.hr1 {
+    margin-top: 110px;
+}
+
+.column ul {
+    list-style-image: url(assets/check.svg);
+    align-items: center;
+    margin-top: 25px;
+}
+
+.column li {
+    margin-top: 12px;
+}
+
 
 .jsonData {
     margin-top: 600px;

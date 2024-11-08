@@ -1,3 +1,6 @@
+
+let selectedAlgorithm = 'All';
+
 // Função dinâmica que abre o seletor de cor e altera a cor do botão
 function abrirSeletorCor(idBotao, idInputCor) {
     const inputCor = document.getElementById(idInputCor);
@@ -82,6 +85,13 @@ function updateCSSColorVar(){
         Secondary: `${colors[3]}`,
         Accent: `${colors[4]}`
     }
+
+    // Criando funçao para configurar o valor de uma variável de forma dinamica
+    function myFunction_set(nomeParametro,cor) {
+    // setando o valor da variavel  
+    r.style.setProperty(nomeParametro,cor);
+    }
+
     var r = document.querySelector(':root');
     for (const key in colorObj) {
         if (colorObj.hasOwnProperty(key)) {
@@ -152,7 +162,7 @@ function generateTriadic(){
 
     updateCSSColorVar()
 }
-
+    
 function generateTetradic(){
     let Hue = getRandomInt(360)
     let primary = Hue + 90
@@ -201,7 +211,38 @@ function generateAnalagous(){
     updateCSSColorVar()
 }
 
-  
+function generateAll(){
+
+}
+
+function showAlgorithms(){
+    var element = document.getElementById("algorithm-selection");
+    element.classList.toggle("hidden");
+}
+
+function updateAlgorithm(newAlgorithm){
+    selectedAlgorithm = newAlgorithm
+}
+
+function useAlgorithm(){
+    switch(selectedAlgorithm){
+        case 'All':
+            generateAll()
+            break;
+        case 'Split Complementary':
+            generateSplitComplementary()
+            break;
+        case 'Triadic':
+            generateTriadic()
+            break;
+        case 'Tetradic':
+            generateTetradic()
+            break;
+        case 'Analagous':
+            generateAnalagous()
+            break;
+    }
+}
 
 updateColorsQueryParam()
 updateCSSColorVar()

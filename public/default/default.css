@@ -37,6 +37,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 10;
     gap: 5px;
     padding: 5px;
     border-radius: 6px;
@@ -51,22 +52,26 @@ body{
     border: 2px solid var(--ToolBar);
     background: var(--ToolBarAccent);
     border-radius: 6px;
+    font-family: var(--Font);
 }
 .color-picker{
-    padding-left: 15px;
-    padding-right: 15px;
-    height: 50px;
+    padding-left: 30px;
+    padding-right: 30px;
+    height: 60px;
     max-width: fit-content;
     flex-shrink: 0;
+    font-family: var(--Font);
+    font-weight:500;
 }
 .normal-btn{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     flex-shrink: 0;
     border-radius: 6px;
+    font-family: var(--Font);
 }
 .normal-btn svg{
     width: 55%;
@@ -79,7 +84,7 @@ body{
     gap: 5px;
     padding-left: 10px;
     padding-right: 5px;
-    background-color: var(--ToolBarAccent);
+    background: var(--ToolBarAccent);
 }
 #rand-btn{
     max-width: fit-content;
@@ -88,7 +93,7 @@ body{
     position: absolute;
     z-index: 2;
     bottom: 70px;
-    left: 490px;
+    left: 43vw;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -170,32 +175,31 @@ body{
     display: none;
 }
 
+/* header */
 main{
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 0;
+    margin: 0;
 }
-
 .header{
     display: block;
-    height: 100vh;
+    height: 175vh;
     width: 100vw;
 }
-
 .header svg{
     position: absolute;
     right: 0px;
     bottom: 0;
     z-index: -1;
 }
-
 #header-box{
     position: absolute;
     left: 150px;
     bottom: 242px;
     align-self: stretch;
 }
-
 #header-box h1{
     color: #000;
     font-family: var(--Font);
@@ -204,5 +208,134 @@ main{
     font-weight: 700;
     max-width: 800px;
     line-height: 120%; /* 115.2px */
+}
+#svg-header-1{
+    left: 5vw;
+    top: 100vh;
+}
+#svg-header-2{
+    right: 0vw;
+    top: 100vh;
+}
+#svg-header-3{
+    right: 25vw;
+    top: 120vh;
+}
+#header-txt1{
+    position: absolute;
+    left: 5vw;
+    top: 115vh;
+    color: var(--Text);
+    font-size: 153.55px;
+    font-family: var(--Font);
+    font-weight: 400;
+    line-height: 162.274px; /* 105.682% */
+    letter-spacing: -9.213px;
+}
+
+/* layout 1 */
+.layout1{
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+}
+.layout1-position{
+    position: absolute;
+}
+.layout1-svg-1{
+    right: 0vw;
+    top: 25vh;
+    width: 35%;
+    height: 35%;
+}
+.layout1-svg-2{
+    left: 5vw;
+    top: 75vh;
+    width: 35%;
+    height: 35%;
+}
+.layout1-svg-3{
+    left: 15vw;
+    top: 15vh;
+    width: 45%;
+    height: 45%;
+}
+.layout1-svg-4{
+    right: 5vw;
+    top: 70vh;
+    width: 55%;
+    height: 55%;
+}
+
+.layout1-txtbox{
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center ;
+    top: 10vh;
+}
+.layout1-txtbox-txt1{
+    color: var(--Text);
+    font-family: var(--Text);
+    font-size: 153.55px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 162.274px; /* 105.682% */
+    letter-spacing: -9.213px;
+}
+.layout1-txtbox-txt2{
+    color: var(--Text);
+    font-family: var(--Font);
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: -2.88px;
+}
+
+.layout1-plans{
+    display: flex;
+    justify-content: center ;
+    width: 100vw;
+    gap: 25px;
+    top: 40vh;
+}
+.layout1-container{
+    width: 300px;
+    height: 450px;
+    flex-shrink: 0;
+    border-radius: 16px;
+    background: rgba(217, 217, 217, 0.66);
+    backdrop-filter: blur(7.5px);
+}
+
+
+/* layout 2 */
+.layout2{
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    padding: 0;
+    margin: 0;
+}
+.svg{
+    position: absolute;
+    z-index: -1;
+}
+#svg-layout2-4{
+    right: 30vw;
+    top: 25vh;
+}
+#layout2-txt2{
+    position: absolute;
+    text-align: end;
+    right: 5vw;
+    top: 35vh;
+    color: var(--Text);
+    font-size: 153.55px;
+    font-family: var(--Font);
+    font-weight: 400;
+    line-height: 162.274px; /* 105.682% */
+    letter-spacing: -9.213px;
 }
 

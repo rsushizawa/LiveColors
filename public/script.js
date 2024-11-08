@@ -212,7 +212,7 @@ function generateAnalagous(){
 }
 
 function generateAll(){
-
+    generateAnalagous()
 }
 
 function showAlgorithms(){

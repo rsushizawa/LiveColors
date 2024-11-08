@@ -9,6 +9,6 @@ app.get('/default',(req,res)=>{
 })
 
 app.listen(5000, function(){
-    console.log("servidor ok!");
+    console.log("server runnig on http://localhost:5000/default/?colors=%23000005-%23fbfbfe-%232f27ce-%23dedcff-%23433cff");
 });
 

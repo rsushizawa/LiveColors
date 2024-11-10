@@ -7,6 +7,8 @@ let primaryLightness = 0;
 let secondaryLightness = 0;
 let accentLightness = 0;
 
+let colorsGlobalArray = getColors()
+
 // Função dinâmica que abre o seletor de cor e altera a cor do botão
 function abrirSeletorCor(idBotao, idInputCor) {
     const inputCor = document.getElementById(idInputCor);
@@ -17,8 +19,9 @@ function abrirSeletorCor(idBotao, idInputCor) {
     inputCor.addEventListener("input", function() {
         var color = inputCor.value;
         //joga na url a cor selecionada
-        updateColorsQueryParam(key, `${color}`);
+        updateColorsGlobalArray(key, `${color}`);
         // atualiza css
+        updateColorsQueryParam()
         updateCSSColorVar()
         calculateLightness()
     });             
@@ -53,44 +56,44 @@ function getColors(){
 }
 
 //função que atualiza os parametro do Colors
-function updateColorsQueryParam(paramName, paramValue) {
-    let colorsArray = getColors();
-    switch(paramName){
-        case 'Text':
-            colorsArray[0]=paramValue;
-            break;
-        case 'Background':
-            colorsArray[1]=paramValue;
-            break;
-        case 'Primary':
-            colorsArray[2]=paramValue;
-            break;
-        case 'Secondary':
-            colorsArray[3]=paramValue;
-            break;
-        case 'Accent':
-            colorsArray[4]=paramValue;
-            break;
-        default:
-            break;
-    }
-
-    let res = `${colorsArray[0]}-${colorsArray[1]}-${colorsArray[2]}-${colorsArray[3]}-${colorsArray[4]}`
+function updateColorsQueryParam(){
+    let res = `${colorsGlobalArray[0]}-${colorsGlobalArray[1]}-${colorsGlobalArray[2]}-${colorsGlobalArray[3]}-${colorsGlobalArray[4]}`
 
     const url = new URL(window.location.href);
     url.searchParams.set('colors', res);
     window.history.pushState({}, '', url);
 }
 
+function updateColorsGlobalArray(paramName, paramValue){
+    switch(paramName){
+        case 'Text':
+            colorsGlobalArray[0]=paramValue;
+            break;
+        case 'Background':
+            colorsGlobalArray[1]=paramValue;
+            break;
+        case 'Primary':
+            colorsGlobalArray[2]=paramValue;
+            break;
+        case 'Secondary':
+            colorsGlobalArray[3]=paramValue;
+            break;
+        case 'Accent':
+            colorsGlobalArray[4]=paramValue;
+            break;
+        default:
+            break;
+    }
+}
+
 // função que atualiza as variáveis de cor do CSS
 function updateCSSColorVar(){
-    const colors = getColors()
     const colorObj = {
-        Text: `${colors[0]}`,
-        Background: `${colors[1]}`,
-        Primary: `${colors[2]}`,
-        Secondary: `${colors[3]}`,
-        Accent: `${colors[4]}`
+        Text: `${colorsGlobalArray[0]}`,
+        Background: `${colorsGlobalArray[1]}`,
+        Primary: `${colorsGlobalArray[2]}`,
+        Secondary: `${colorsGlobalArray[3]}`,
+        Accent: `${colorsGlobalArray[4]}`
     }
 
     // Criando funçao para configurar o valor de uma variável de forma dinamica
@@ -139,9 +142,10 @@ function generateSplitComplementary(){
 
     for (const key in colorobj) {
         if (colorobj.hasOwnProperty(key)) {
-            updateColorsQueryParam(`${key}`,`${colorobj[key]}`)
+            updateColorsGlobalArray(`${key}`,`${colorobj[key]}`)
         }
     }
+    updateColorsQueryParam()
 
     updateCSSColorVar()
 }
@@ -163,9 +167,10 @@ function generateTriadic(){
 
     for (const key in colorobj) {
         if (colorobj.hasOwnProperty(key)) {
-            updateColorsQueryParam(`${key}`,`${colorobj[key]}`)
+            updateColorsGlobalArray(`${key}`,`${colorobj[key]}`)
         }
     }
+    updateColorsQueryParam()
 
     updateCSSColorVar()
 }
@@ -187,9 +192,10 @@ function generateTetradic(){
 
     for (const key in colorobj) {
         if (colorobj.hasOwnProperty(key)) {
-            updateColorsQueryParam(`${key}`,`${colorobj[key]}`)
+            updateColorsGlobalArray(`${key}`,`${colorobj[key]}`)
         }
     }
+    updateColorsQueryParam()
 
     updateCSSColorVar()
 }
@@ -211,9 +217,10 @@ function generateAnalagous(){
 
     for (const key in colorobj) {
         if (colorobj.hasOwnProperty(key)) {
-            updateColorsQueryParam(`${key}`,`${colorobj[key]}`)
+            updateColorsGlobalArray(`${key}`,`${colorobj[key]}`)
         }
     }
+    updateColorsQueryParam()
 
     updateCSSColorVar()
 }
@@ -324,11 +331,32 @@ function darkLight(){
     let temp = text[2]
     text[2] = background[2]
     background[2] = temp
-    updateColorsQueryParam('Text', hslToHex(text[0],text[1],text[2]))
-    updateColorsQueryParam('Background', hslToHex(background[0],background[1],background[2]))
+    updateColorsGlobalArray('Text', hslToHex(text[0],text[1],text[2]))
+    updateColorsGlobalArray('Background', hslToHex(background[0],background[1],background[2]))
     updateCSSColorVar()
 }
 
+function undo(){
+    if (history.length>2){
+        var element = document.getElementById("redo-btn");
+        element.classList.remove("hidden");
+    }
+    colorsGlobalArray = getColors()
+    updateCSSColorVar()
+    history.back()
+}
+
+function redo(){
+    if (history.length<2){
+        var element = document.getElementById("redo-btn");
+        element.classList.add("hidden");
+    }
+    colorsGlobalArray = getColors()
+    updateCSSColorVar()
+    history.forward()
+}
+
 calculateLightness()
+updateColorsGlobalArray()
 updateColorsQueryParam()
 updateCSSColorVar()

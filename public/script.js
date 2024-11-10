@@ -1,5 +1,11 @@
 
 let selectedAlgorithm = 'All';
+// the color is 0 = light or 1 = dark
+let textLightness = 0;
+let backgroundLightness = 0;
+let primaryLightness = 0;
+let secondaryLightness = 0;
+let accentLightness = 0;
 
 // Função dinâmica que abre o seletor de cor e altera a cor do botão
 function abrirSeletorCor(idBotao, idInputCor) {
@@ -8,12 +14,13 @@ function abrirSeletorCor(idBotao, idInputCor) {
     var key = botao.innerText;
     // Simula o clique no input de cor
     inputCor.click();
-    inputCor.addEventListener('input', function() {
+    inputCor.addEventListener("input", function() {
         var color = inputCor.value;
         //joga na url a cor selecionada
         updateColorsQueryParam(key, `${color}`);
         // atualiza css
-        updateCSSColorVar()  
+        updateCSSColorVar()
+        calculateLightness()
     });             
 }
 
@@ -75,7 +82,7 @@ function updateColorsQueryParam(paramName, paramValue) {
     window.history.pushState({}, '', url);
 }
 
-// função de atualizar que atualiza as variáveis de cor do CSS
+// função que atualiza as variáveis de cor do CSS
 function updateCSSColorVar(){
     const colors = getColors()
     const colorObj = {
@@ -242,7 +249,86 @@ function useAlgorithm(){
             generateAnalagous()
             break;
     }
+    calculateLightness()
 }
 
+function hexToHSL(H) {
+    // Convert hex to RGB first
+    let r = 0, g = 0, b = 0;
+    if (H.length == 4) {
+      r = "0x" + H[1] + H[1];
+      g = "0x" + H[2] + H[2];
+      b = "0x" + H[3] + H[3];
+    } else if (H.length == 7) {
+      r = "0x" + H[1] + H[2];
+      g = "0x" + H[3] + H[4];
+      b = "0x" + H[5] + H[6];
+    }
+    // Then to HSL
+    r /= 255;
+    g /= 255;
+    b /= 255;
+    let cmin = Math.min(r,g,b),
+        cmax = Math.max(r,g,b),
+        delta = cmax - cmin,
+        h = 0,
+        s = 0,
+        l = 0;
+  
+    if (delta == 0)
+      h = 0;
+    else if (cmax == r)
+      h = ((g - b) / delta) % 6;
+    else if (cmax == g)
+      h = (b - r) / delta + 2;
+    else
+      h = (r - g) / delta + 4;
+  
+    h = Math.round(h * 60);
+  
+    if (h < 0)
+      h += 360;
+  
+    l = (cmax + cmin) / 2;
+    s = delta == 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
+    s = +(s * 100).toFixed(1);
+    l = +(l * 100).toFixed(1);
+  
+    return [h,s,l]
+}
+
+function calculateLightness(){
+    let colors = getColors();
+    var r = document.querySelector(':root');
+    for (const key in colors) {
+        if (colors.hasOwnProperty(key)) {
+            let hsl = hexToHSL(colors[key])
+            if (hsl[2]<=30){
+                hsl[2] = 99
+                let hex = hslToHex(hsl[0],hsl[1],hsl[2]);
+                r.style.setProperty(`--ColorPickerText${key}`, `${hex}`);
+            } else if(hsl[2]>30){
+                hsl[2] = 1
+                let hex = hslToHex(hsl[0],hsl[1],hsl[2]);
+                r.style.setProperty(`--ColorPickerText${key}`, `${hex}`);
+            }
+        }
+    }
+}
+
+function darkLight(){
+    console.log('1')
+    let colors = getColors();
+    let text = hexToHSL(colors[0])
+    let background = hexToHSL(colors[1])
+    let temp = text[2]
+    text[2] = background[2]
+    background[2] = temp
+    updateColorsQueryParam('Text', hslToHex(text[0],text[1],text[2]))
+    updateColorsQueryParam('Background', hslToHex(background[0],background[1],background[2]))
+    updateCSSColorVar()
+}
+
+calculateLightness()
 updateColorsQueryParam()
 updateCSSColorVar()

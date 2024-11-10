@@ -3,12 +3,12 @@
 :root{
     --Text:rgb(255, 255, 255);
     --Background:rgb(0, 0, 0);
+    --ColorPickerText2: rgb(255, 255, 255);
+    --ColorPickerText3: rgb(255, 255, 255);
+    --ColorPickerText4: rgb(255, 255, 255);
     --Primary: rgb(248, 84, 84);
-    --PrimaryContrast: ;
     --Secondary: rgba(0, 255, 8, 0.692);
-    --SecondaryContrast: ;
     --Accent: rgb(174, 243, 211);
-    --AccentContrast: ;
     --ToolBar: #cdcdcd2e;
     --ToolBarAccent: #ffffff;
     --ToolBarAccentContrast: #161616;
@@ -28,8 +28,16 @@ body{
     align-items: center;
     font-family: 'Poppins', serif;
     font-weight: 800;
-    font-style: normal;  
+    font-style: normal;
     background-color: var(--Background); 
+}
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
 }
 
 /* barra de ferramentas */
@@ -129,12 +137,15 @@ body{
 }
 #primary_color{
     background-color: var(--Primary);
+    color: var(--ColorPickerText2);
 }
 #secondary_color{
     background-color: var(--Secondary);
+    color: var(--ColorPickerText3);
 }   
 #accent_color{
     background-color: var(--Accent);
+    color: var(--ColorPickerText4);
 }
 
 /* normal btns */
@@ -187,6 +198,7 @@ main{
     display: block;
     height: 175vh;
     width: 100vw;
+    color: var(--Text);
 }
 .header svg{
     position: absolute;
@@ -201,7 +213,7 @@ main{
     align-self: stretch;
 }
 #header-box h1{
-    color: #000;
+    color: var(--Text);
     font-family: var(--Font);
     font-size: 96px;
     font-style: normal;
@@ -223,6 +235,7 @@ main{
 }
 #header-txt1{
     position: absolute;
+    color: var(--Text);
     left: 5vw;
     top: 115vh;
     color: var(--Text);

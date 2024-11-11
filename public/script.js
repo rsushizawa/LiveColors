@@ -347,7 +347,7 @@ function undo(){
 }
 
 function redo(){
-    if (history.length<2){
+    if (!history.forward){
         var element = document.getElementById("redo-btn");
         element.classList.add("hidden");
     }

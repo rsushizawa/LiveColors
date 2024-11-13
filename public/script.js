@@ -356,6 +356,51 @@ function redo(){
     history.forward()
 }
 
+const fetchJson = async url => {
+    const response = await fetch(url)
+    return response.json()
+}
+
+async function getVariantsList(family){
+    const variants = document.getElementById('font-variants')
+    variants.innerHTML = ''
+    const data = await fetchJson('/default/key')
+    for (let i = 100; i >= 0 ; i--){    
+        if(data.items[i].family==`${family}`){
+            for (const key in data.items[i].variants){
+                let li = document.createElement('li')
+                li.innerHTML = `<button onclick="changeFont('${data.items[i].family}','${data.items[i].variants[key]}')">${data.items[i].variants[key]}</button>`
+                variants.appendChild(li)
+            }
+            return 0;
+        }
+    }
+}
+
+async function getFontsList(){
+    
+    var element = document.getElementById("font-selection")
+    element.classList.toggle("hidden")
+    const data = await fetchJson('/default/key')
+    const display = document.getElementById('font-display')
+    for (let i = 100; i >= 0 ; i--){
+        let li = document.createElement('li')
+        li.innerHTML = `<button onclick="getVariantsList('${data.items[i].family}')">${data.items[i].family}</button>`
+        display.appendChild(li)
+    }
+}
+
+function changeFont(family,variant){
+    const head = document.getElementsByTagName("head")[0]
+    // head.removeChild(head.lastChild);
+    var r = document.querySelector(':root');
+    r.style.setProperty(`--Font`, `"${family}",${variant}`);
+    var link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = "https://fonts.googleapis.com/css2?family=${family}:${variant}";
+    head.appendChild(link);
+}
+
 calculateLightness()
 updateColorsGlobalArray()
 updateColorsQueryParam()

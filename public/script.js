@@ -361,6 +361,10 @@ const fetchJson = async url => {
     return response.json()
 }
 
+function isNumeric(value) {
+    return /^\d+$/.test(value);
+}
+
 async function getVariantsList(family){
     const variants = document.getElementById('font-variants')
     variants.innerHTML = ''
@@ -368,9 +372,11 @@ async function getVariantsList(family){
     for (let i = 100; i >= 0 ; i--){    
         if(data.items[i].family==`${family}`){
             for (const key in data.items[i].variants){
-                let li = document.createElement('li')
-                li.innerHTML = `<button onclick="changeFont('${data.items[i].family}','${data.items[i].variants[key]}')">${data.items[i].variants[key]}</button>`
-                variants.appendChild(li)
+                if (!isNumeric(data.items[i].variants[key])){
+                    let li = document.createElement('li')
+                    li.innerHTML = `<button onclick="changeFont('${data.items[i].family}','${data.items[i].variants[key]}')">${data.items[i].variants[key]}</button>`
+                    variants.appendChild(li)
+                }
             }
             return 0;
         }
@@ -392,12 +398,13 @@ async function getFontsList(){
 
 function changeFont(family,variant){
     const head = document.getElementsByTagName("head")[0]
-    // head.removeChild(head.lastChild);
+    head.removeChild(head.lastChild);
     var r = document.querySelector(':root');
-    r.style.setProperty(`--Font`, `"${family}",${variant}`);
+    r.style.setProperty(`--Font`, `"${family}", serif`);
+    r.style.setProperty(`--Font-Style`, `${variant}`);
     var link = document.createElement("link");
     link.rel = "stylesheet";
-    link.href = "https://fonts.googleapis.com/css2?family=${family}:${variant}";
+    link.href = `https://fonts.googleapis.com/css?family=${family}:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap`;
     head.appendChild(link);
 }
 

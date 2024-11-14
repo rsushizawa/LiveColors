@@ -3,16 +3,17 @@
 :root{
     --Text:rgb(255, 255, 255);
     --Background:rgb(0, 0, 0);
+    --ColorPickerText2: rgb(255, 255, 255);
+    --ColorPickerText3: rgb(255, 255, 255);
+    --ColorPickerText4: rgb(255, 255, 255);
     --Primary: rgb(248, 84, 84);
-    --PrimaryContrast: ;
     --Secondary: rgba(0, 255, 8, 0.692);
-    --SecondaryContrast: ;
     --Accent: rgb(174, 243, 211);
-    --AccentContrast: ;
     --ToolBar: #cdcdcd2e;
     --ToolBarAccent: #ffffff;
     --ToolBarAccentContrast: #161616;
     --Font: "Poppins", serif;
+    --Font-Style: normal;
 }
 
 *{
@@ -28,8 +29,16 @@ body{
     align-items: center;
     font-family: 'Poppins', serif;
     font-weight: 800;
-    font-style: normal;  
+    font-style: var(--Font-Style);
     background-color: var(--Background); 
+}
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
 }
 
 /* barra de ferramentas */
@@ -68,6 +77,7 @@ body{
     background: var(--ToolBarAccent);
     border-radius: 6px;
     font-family: var(--Font);
+    font-style: var(--Font-Style);
 }
 .color-picker{
     padding-left: 30px;
@@ -77,6 +87,7 @@ body{
     flex-shrink: 0;
     font-family: var(--Font);
     font-weight:500;
+    font-style: var(--Font-Style);
 }
 .normal-btn{
     display: flex;
@@ -87,6 +98,7 @@ body{
     flex-shrink: 0;
     border-radius: 6px;
     font-family: var(--Font);
+    font-style: var(--Font-Style);
 }
 .normal-btn svg{
     width: 55%;
@@ -133,6 +145,70 @@ body{
     background-color: var(--ToolBar);
 }
 
+.font-selection{
+    position: absolute;
+    z-index: 2;
+    bottom: 70px;
+    left: 47vw;
+    display: flex;
+    justify-content: center;
+    gap: 2px;
+    font-size: 16px;
+    width: 400px;
+    height: 300px;
+    padding: 15px;
+    border-radius: 6px;
+    border: 2px solid var(--ToolBar);
+    background-color: var(--ToolBarAccent);
+}
+.font-display{
+    width: 200px;
+    padding: 15px;
+    border-radius: 6px;
+    border: 2px solid var(--ToolBar);
+    background-color: var(--ToolBarAccent);
+    overflow:scroll;
+    
+}
+.font-display ul{
+    list-style: none;
+    list-style-type: none;
+
+}
+.font-display button{
+    text-decoration: none;
+    text-align: start;
+    width: 170px;   
+    padding: 8px;
+    margin-bottom: 3px;
+    border-radius: 6px;
+    border: 2px solid var(--ToolBar);
+    background-color: var(--ToolBarAccent);
+}
+.font-variants{
+    width: 200px;
+    padding: 15px;
+    border-radius: 6px;
+    border: 2px solid var(--ToolBar);
+    background-color: var(--ToolBarAccent);
+    overflow:scroll;
+}
+.font-variants ul{
+    list-style: none;
+    list-style-type: none;
+
+}
+.font-variants button{
+    text-decoration: none;
+    text-align: start;
+    width: 170px;   
+    padding: 8px;
+    margin-bottom: 3px;
+    border-radius: 6px;
+    border: 2px solid var(--ToolBar);
+    background-color: var(--ToolBarAccent);
+}
+
 /* color-picker btns */
 #font_color{
     background-color: var(--Text);
@@ -144,12 +220,15 @@ body{
 }
 #primary_color{
     background-color: var(--Primary);
+    color: var(--ColorPickerText2);
 }
 #secondary_color{
     background-color: var(--Secondary);
+    color: var(--ColorPickerText3);
 }   
 #accent_color{
     background-color: var(--Accent);
+    color: var(--ColorPickerText4);
 }
 
 /* normal btns */
@@ -202,6 +281,7 @@ main{
     display: block;
     height: 175vh;
     width: 100vw;
+    color: var(--Text);
 }
 .header svg{
     position: absolute;
@@ -216,11 +296,11 @@ main{
     align-self: stretch;
 }
 #header-box h1{
-    color: #000;
+    color: var(--Text);
     font-family: var(--Font);
     font-size: 96px;
-    font-style: normal;
     font-weight: 700;
+    font-style: var(--Font-Style);
     max-width: 800px;
     line-height: 120%; /* 115.2px */
 }
@@ -238,12 +318,14 @@ main{
 }
 #header-txt1{
     position: absolute;
+    color: var(--Text);
     left: 5vw;
     top: 115vh;
     color: var(--Text);
     font-size: 153.55px;
     font-family: var(--Font);
     font-weight: 400;
+    font-style: var(--Font-Style);
     line-height: 162.274px; /* 105.682% */
     letter-spacing: -9.213px;
 }
@@ -289,12 +371,13 @@ main{
     align-items: center;
     justify-content: center ;
     top: 10vh;
+    font-style: var(--Font-Style);
 }
 .layout1-txtbox-txt1{
     color: var(--Text);
     font-family: var(--Text);
     font-size: 153.55px;
-    font-style: normal;
+    font-style: var(--Font-Style);
     font-weight: 400;
     line-height: 162.274px; /* 105.682% */
     letter-spacing: -9.213px;
@@ -303,7 +386,7 @@ main{
     color: var(--Text);
     font-family: var(--Font);
     font-size: 48px;
-    font-style: normal;
+    font-style: var(--Font-Style);
     font-weight: 400;
     letter-spacing: -2.88px;
 }
@@ -350,6 +433,7 @@ main{
     font-size: 153.55px;
     font-family: var(--Font);
     font-weight: 400;
+    font-style: var(--Font-Style);
     line-height: 162.274px; /* 105.682% */
     letter-spacing: -9.213px;
 }

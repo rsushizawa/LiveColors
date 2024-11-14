@@ -408,7 +408,35 @@ function changeFont(family,variant){
     head.appendChild(link);
 }
 
+
+function legend(btn_name, message){
+    var btn = document.getElementById(btn_name);
+    var msgDiv = document.getElementById("msgDiv");
+
+    btn.addEventListener("mouseover", () => {
+        msgDiv.style.opacity = "1";
+        msgDiv.style.visibility = "visible";
+        msgDiv.innerHTML = message;
+    });
+
+
+    btn.addEventListener("mouseout", () => {
+        msgDiv.style.opacity = "0";
+        msgDiv.style.visibility = "hidden";
+        msgDiv.innerHTML = ' ';
+    });
+
+}
+legend('light-dark','Alterna entre modo claro e escuro');
+legend('rand-div','Altera as cores da página com base no tipo selecionado');
+legend('undo-btn','Volta a ação');
+legend('redo-btn','Retorna à alteração');
+legend('fonts-btn','Troca a fonte');
+legend('share-btn','Gera um link para compartilhar este template com as cores e fontes selecionadas');
+legend('hide-btn','Esconde a tool-bar');
+
 calculateLightness()
 updateColorsGlobalArray()
+
 updateColorsQueryParam()
 updateCSSColorVar()

@@ -368,11 +368,11 @@ function isNumeric(value) {
 async function getVariantsList(family){
     const variants = document.getElementById('font-variants')
     variants.innerHTML = ''
-    const data = await fetchJson('/default/key')
+    const data = await fetchJson('/key')
     for (let i = 100; i >= 0 ; i--){    
         if(data.items[i].family==`${family}`){
             for (const key in data.items[i].variants){
-                if (!isNumeric(data.items[i].variants[key])){
+                if (data.items[i].variants[key]){
                     let li = document.createElement('li')
                     li.innerHTML = `<button onclick="changeFont('${data.items[i].family}','${data.items[i].variants[key]}')">${data.items[i].variants[key]}</button>`
                     variants.appendChild(li)
@@ -387,7 +387,8 @@ async function getFontsList(){
     
     var element = document.getElementById("font-selection")
     element.classList.toggle("hidden")
-    const data = await fetchJson('/default/key')
+    const data = await fetchJson('/key')
+    // console.log(data)
     const display = document.getElementById('font-display')
     for (let i = 100; i >= 0 ; i--){
         let li = document.createElement('li')
@@ -408,25 +409,26 @@ function changeFont(family,variant){
     head.appendChild(link);
 }
 
+function addQueryParameterOnLoad(key, value) {
 
-function legend(btn_name, message){
-    var btn = document.getElementById(btn_name);
-    var msgDiv = document.getElementById("msgDiv");
-
-    btn.addEventListener("mouseover", () => {
-        msgDiv.style.opacity = "1";
-        msgDiv.style.visibility = "visible";
-        msgDiv.innerHTML = message;
-    });
-
-
-    btn.addEventListener("mouseout", () => {
-        msgDiv.style.opacity = "0";
-        msgDiv.style.visibility = "hidden";
-        msgDiv.innerHTML = ' ';
-    });
-
+    const url = new URL(window.location.href);
+    url.searchParams.set(key, value);
+    window.history.pushState({}, '', url);
+    (function()
+{
+  if( window.localStorage )
+  {
+    if( !localStorage.getItem('firstLoad') )
+    {
+      localStorage['firstLoad'] = true;
+      window.location.reload();
+    }  
+    else
+      localStorage.removeItem('firstLoad');
+  }
+})();
 }
+
 legend('light-dark','Alterna entre modo claro e escuro');
 legend('rand-div','Altera as cores da página com base no tipo selecionado');
 legend('undo-btn','Volta a ação');
@@ -437,6 +439,5 @@ legend('hide-btn','Esconde a tool-bar');
 
 calculateLightness()
 updateColorsGlobalArray()
-
 updateColorsQueryParam()
 updateCSSColorVar()

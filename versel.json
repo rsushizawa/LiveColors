@@ -2,5 +2,5 @@
     "version": 2,
     "builds": [{ "src":"./server.js", "use":"@versel/node"}],
     "routes": [{ "src":"/(.*)", "dest":"/"}],
-    "rewrites": [{ "source": "/(.*)", "destination": "/" }]
+    "rewrites": [{ "source": "/key", "destination": "/key" }]
 }

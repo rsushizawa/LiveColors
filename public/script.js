@@ -6,6 +6,12 @@ let backgroundLightness = 0;
 let primaryLightness = 0;
 let secondaryLightness = 0;
 let accentLightness = 0;
+// variavéis do carrosel
+let slideIndex = 0;
+let interValid = null;
+const slides = document.querySelectorAll(".slides img");
+
+document.addEventListener("DOMContentLoaded", initializeSlider)
 
 let colorsGlobalArray = getColors()
 
@@ -427,6 +433,38 @@ function addQueryParameterOnLoad(key, value) {
       localStorage.removeItem('firstLoad');
   }
 })();
+}
+
+function initializeSlider(){
+    if(slides. length > 0){
+        slides[slideIndex].classList.add("displaySlide");
+        setInterval(nextSlide, 5000);
+    }
+}
+
+function showSlide(index){
+    if(index >= slides.length){
+        slideIndex = 0;
+    }
+    else if(index < 0){
+        slideIndex = slides.length - 1;
+    }
+    slides.forEach(slide => {
+        slide.classList.remove("displaySlide");
+    });
+    slides[slideIndex].classList.add("displaySlide");
+}
+
+function prevSlide(){
+    clearInterval(interValid)
+    slideIndex--;
+    showSlide(slideIndex);
+}
+
+function nextSlide(){
+    clearInterval(interValid);
+    slideIndex++;
+    showSlide(slideIndex);
 }
 
 legend('light-dark','Alterna entre modo claro e escuro');

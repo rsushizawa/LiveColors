@@ -10,6 +10,9 @@ app.use(express.static('public'));
 app.get('/',(req,res)=>{
     res.sendFile(path.join(__dirname,'public/index.html'));
 })
+app.get('/secondTemplate',(req,res)=>{
+    res.sendFile(path.join(__dirname,'public/secondTemplate.html'));
+})
 
 app.get('/key',(req,res)=>{
     fetch(`https://www.googleapis.com/webfonts/v1/webfonts?key=${API_KEY}&sort=popularity`)

@@ -2,10 +2,11 @@
   "name": "livecolors",
   "version": "1.0.0",
   "description": "The software in this repository can't be used, modified, or shared without the permission from the authors.",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node index.js",
+    "server": "nodemon index.js"
   },
   "keywords": [],
   "author": "",

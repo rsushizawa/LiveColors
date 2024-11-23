@@ -42,14 +42,19 @@ html {
 }
 
 /* barra de ferramentas */
-#tool-bar{
+
+#tool-bar,.tool-bar-hide{
     display: flex;
-    align-items: center;
-    justify-content: center;
+    border-radius: 6px;
     z-index: 10;
     gap: 5px;
     padding: 5px;
-    border-radius: 6px;
+}
+
+#tool-bar{
+    
+    align-items: center;
+    justify-content: center;
     background: var(--ToolBar);   
     max-width: fit-content; 
     height: fit-content;
@@ -57,6 +62,8 @@ html {
     position: fixed;
     bottom: 50px;
 }
+
+
 #msgDiv{
     opacity: 0;
     transition: opacity 0.1s ease-in-out, visibility 0.1s ease-in-out;
@@ -116,6 +123,25 @@ html {
 #rand-btn{
     max-width: fit-content;
 }
+
+.copy-msg{
+    position: absolute;
+    z-index: 2;
+    bottom: 80px;
+    left: 49.5vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    font-size: 16px;
+    width: 60px;
+    height: 30px;
+    padding: 15px;
+    border-radius: 6px;
+    border: 2px solid var(--ToolBar);
+    background-color: rgb(95, 141, 95);
+}
+
 .algorithm-selection{
     position: absolute;
     z-index: 2;
@@ -436,5 +462,9 @@ main{
     font-style: var(--Font-Style);
     line-height: 162.274px; /* 105.682% */
     letter-spacing: -9.213px;
+}
+
+#share-btn{
+    position: relative;
 }
 

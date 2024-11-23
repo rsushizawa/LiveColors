@@ -13,8 +13,6 @@ const slides = document.querySelectorAll(".slides img");
 
 document.addEventListener("DOMContentLoaded", initializeSlider)
 
-let colorsGlobalArray = getColors()
-
 // Função dinâmica que abre o seletor de cor e altera a cor do botão
 function abrirSeletorCor(idBotao, idInputCor) {
     const inputCor = document.getElementById(idInputCor);
@@ -60,6 +58,9 @@ function getColors(){
 
     return colors;
 }
+
+let colorsGlobalArray = ['%23000005','%23fbfbfe','%232f27ce','%23dedcff','%23433cff'];
+colorsGlobalArray = getColors()
 
 //função que atualiza os parametro do Colors
 function updateColorsQueryParam(){
@@ -131,6 +132,7 @@ function hslToHex(h, s, l) {
     return `#${f(0)}${f(8)}${f(4)}`;
 }
 
+//color algorithms
 function generateSplitComplementary(){
     let Hue = getRandomInt(360)
     let primary = Hue + 150
@@ -235,6 +237,7 @@ function generateAll(){
     generateAnalagous()
 }
 
+//select color algorithm
 function showAlgorithms(){
     var element = document.getElementById("algorithm-selection");
     element.classList.toggle("hidden");
@@ -329,6 +332,7 @@ function calculateLightness(){
     }
 }
 
+// dark/light function
 function darkLight(){
     console.log('1')
     let colors = getColors();
@@ -342,7 +346,28 @@ function darkLight(){
     updateCSSColorVar()
 }
 
-function undo(){
+
+function hideToolbar(){
+    var element = document.getElementById("tool-bar-hide");
+    element.classList.toggle("hidden");
+}
+
+function copyCurrentURL() {
+    const textarea = document.createElement('textarea');
+    textarea.value = window.location.href;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textarea);
+    showCopyMsg();
+  }
+
+  function showCopyMsg(){
+    var element = document.getElementById("copy-msg");
+    element.classList.toggle("hidden");
+}
+  
+function undo() {
     if (history.length>2){
         var element = document.getElementById("redo-btn");
         element.classList.remove("hidden");
@@ -362,19 +387,16 @@ function redo(){
     history.forward()
 }
 
+//change fonts function
 const fetchJson = async url => {
     const response = await fetch(url)
     return response.json()
 }
 
-function isNumeric(value) {
-    return /^\d+$/.test(value);
-}
-
 async function getVariantsList(family){
     const variants = document.getElementById('font-variants')
     variants.innerHTML = ''
-    const data = await fetchJson('/key')
+    const data = await fetchJson('./key')
     for (let i = 100; i >= 0 ; i--){    
         if(data.items[i].family==`${family}`){
             for (const key in data.items[i].variants){
@@ -415,26 +437,8 @@ function changeFont(family,variant){
     head.appendChild(link);
 }
 
-function addQueryParameterOnLoad(key, value) {
 
-    const url = new URL(window.location.href);
-    url.searchParams.set(key, value);
-    window.history.pushState({}, '', url);
-    (function()
-{
-  if( window.localStorage )
-  {
-    if( !localStorage.getItem('firstLoad') )
-    {
-      localStorage['firstLoad'] = true;
-      window.location.reload();
-    }  
-    else
-      localStorage.removeItem('firstLoad');
-  }
-})();
-}
-
+// second template slider
 function initializeSlider(){
     if(slides. length > 0){
         slides[slideIndex].classList.add("displaySlide");
@@ -491,6 +495,5 @@ legend('share-btn','Gera um link para compartilhar este template com as cores e 
 legend('hide-btn','Esconde a tool-bar');
 
 calculateLightness()
-updateColorsGlobalArray()
 updateColorsQueryParam()
 updateCSSColorVar()

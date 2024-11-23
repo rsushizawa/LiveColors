@@ -346,8 +346,13 @@ function darkLight(){
     updateCSSColorVar()
 }
 
-//undo/redo function
-function undo(){
+
+function hideToolbar(){
+    var element = document.getElementById("tool-bar-hide");
+    element.classList.toggle("hidden");
+}
+
+function undo() {
     if (history.length>2){
         var element = document.getElementById("redo-btn");
         element.classList.remove("hidden");

@@ -397,7 +397,7 @@ async function fetchJson(url){
 async function getVariantsList(family){
     const variants = document.getElementById('font-variants')
     variants.innerHTML = ''
-    const data = await fetchJson('/api/key')
+    const data = await fetchJson('/key')
     for (let i = 100; i >= 0 ; i--){    
         if(data.items[i].family==`${family}`){
             for (const key in data.items[i].variants){

@@ -12,8 +12,8 @@ let interValid = null;
 const slides = document.querySelectorAll(".slides img");
 
 document.addEventListener("DOMContentLoaded", initializeSlider)
+document.addEventListener("DOMContentLoaded", addQueryParameterOnLoad('colors', '%23000005-%23fbfbfe-%232f27ce-%23dedcff-%23433cff'))
 
-let colorsGlobalArray = getColors()
 
 // Função dinâmica que abre o seletor de cor e altera a cor do botão
 function abrirSeletorCor(idBotao, idInputCor) {
@@ -60,6 +60,8 @@ function getColors(){
 
     return colors;
 }
+
+let colorsGlobalArray = getColors()
 
 //função que atualiza os parametro do Colors
 function updateColorsQueryParam(){
@@ -420,19 +422,18 @@ function addQueryParameterOnLoad(key, value) {
     const url = new URL(window.location.href);
     url.searchParams.set(key, value);
     window.history.pushState({}, '', url);
-    (function()
-{
-  if( window.localStorage )
-  {
-    if( !localStorage.getItem('firstLoad') )
-    {
-      localStorage['firstLoad'] = true;
-      window.location.reload();
-    }  
-    else
-      localStorage.removeItem('firstLoad');
-  }
-})();
+    (function(){
+        if( window.localStorage )
+        {
+        if( !localStorage.getItem('firstLoad') )
+        {
+            localStorage['firstLoad'] = true;
+            window.location.reload();
+        }  
+        else
+            localStorage.removeItem('firstLoad');
+        }
+    })();
 }
 
 function initializeSlider(){

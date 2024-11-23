@@ -352,6 +352,21 @@ function hideToolbar(){
     element.classList.toggle("hidden");
 }
 
+function copyCurrentURL() {
+    const textarea = document.createElement('textarea');
+    textarea.value = window.location.href;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textarea);
+    showCopyMsg();
+  }
+
+  function showCopyMsg(){
+    var element = document.getElementById("copy-msg");
+    element.classList.toggle("hidden");
+}
+  
 function undo() {
     if (history.length>2){
         var element = document.getElementById("redo-btn");

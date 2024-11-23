@@ -467,6 +467,21 @@ function nextSlide(){
     showSlide(slideIndex);
 }
 
+function legend(btn_name, message){
+    var btn = document.getElementById(btn_name);
+    var msgDiv = document.getElementById("msgDiv");
+    btn.addEventListener("mouseover", () => {
+        msgDiv.style.opacity = "1";
+        msgDiv.style.visibility = "visible";
+        msgDiv.innerHTML = message;
+    });
+    btn.addEventListener("mouseout", () => {
+        msgDiv.style.opacity = "0";
+        msgDiv.style.visibility = "hidden";
+        msgDiv.innerHTML = ' ';
+    });
+}
+
 legend('light-dark','Alterna entre modo claro e escuro');
 legend('rand-div','Altera as cores da página com base no tipo selecionado');
 legend('undo-btn','Volta a ação');

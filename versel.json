@@ -1,6 +1,8 @@
 {
     "version": 2,
-    "builds": [{ "src":"./server.js", "use":"@versel/node"}],
-    "routes": [{ "src":"/(.*)", "dest":"/"}],
-    "rewrites": [{ "source": "/key", "destination": "/key" }]
-}
+    "builds": [{"src": "./index.js","use": "@vercel/node"}],
+    "routes": [
+     {"src": "/(.*)","destination": "/api/index.js"},
+     { "source": "/api/:path*", "destination": "/api/:path*" }
+    ]
+ }

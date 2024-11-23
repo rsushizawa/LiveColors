@@ -13,8 +13,6 @@ const slides = document.querySelectorAll(".slides img");
 
 document.addEventListener("DOMContentLoaded", initializeSlider)
 
-let colorsGlobalArray = getColors()
-
 // Função dinâmica que abre o seletor de cor e altera a cor do botão
 function abrirSeletorCor(idBotao, idInputCor) {
     const inputCor = document.getElementById(idInputCor);
@@ -60,6 +58,9 @@ function getColors(){
 
     return colors;
 }
+
+let colorsGlobalArray = ['%23000005','%23fbfbfe','%232f27ce','%23dedcff','%23433cff'];
+colorsGlobalArray = getColors()
 
 //função que atualiza os parametro do Colors
 function updateColorsQueryParam(){
@@ -131,6 +132,7 @@ function hslToHex(h, s, l) {
     return `#${f(0)}${f(8)}${f(4)}`;
 }
 
+//color algorithms
 function generateSplitComplementary(){
     let Hue = getRandomInt(360)
     let primary = Hue + 150
@@ -235,6 +237,7 @@ function generateAll(){
     generateAnalagous()
 }
 
+//select color algorithm
 function showAlgorithms(){
     var element = document.getElementById("algorithm-selection");
     element.classList.toggle("hidden");
@@ -329,6 +332,7 @@ function calculateLightness(){
     }
 }
 
+// dark/light function
 function darkLight(){
     console.log('1')
     let colors = getColors();
@@ -342,6 +346,7 @@ function darkLight(){
     updateCSSColorVar()
 }
 
+//undo/redo function
 function undo(){
     if (history.length>2){
         var element = document.getElementById("redo-btn");
@@ -362,6 +367,7 @@ function redo(){
     history.forward()
 }
 
+//change fonts function
 const fetchJson = async url => {
     const response = await fetch(url)
     return response.json()
@@ -411,26 +417,8 @@ function changeFont(family,variant){
     head.appendChild(link);
 }
 
-function addQueryParameterOnLoad(key, value) {
 
-    const url = new URL(window.location.href);
-    url.searchParams.set(key, value);
-    window.history.pushState({}, '', url);
-    (function()
-{
-  if( window.localStorage )
-  {
-    if( !localStorage.getItem('firstLoad') )
-    {
-      localStorage['firstLoad'] = true;
-      window.location.reload();
-    }  
-    else
-      localStorage.removeItem('firstLoad');
-  }
-})();
-}
-
+// second template slider
 function initializeSlider(){
     if(slides. length > 0){
         slides[slideIndex].classList.add("displaySlide");
@@ -463,6 +451,21 @@ function nextSlide(){
     showSlide(slideIndex);
 }
 
+function legend(btn_name, message){
+    var btn = document.getElementById(btn_name);
+    var msgDiv = document.getElementById("msgDiv");
+    btn.addEventListener("mouseover", () => {
+        msgDiv.style.opacity = "1";
+        msgDiv.style.visibility = "visible";
+        msgDiv.innerHTML = message;
+    });
+    btn.addEventListener("mouseout", () => {
+        msgDiv.style.opacity = "0";
+        msgDiv.style.visibility = "hidden";
+        msgDiv.innerHTML = ' ';
+    });
+}
+
 legend('light-dark','Alterna entre modo claro e escuro');
 legend('rand-div','Altera as cores da página com base no tipo selecionado');
 legend('undo-btn','Volta a ação');
@@ -472,6 +475,5 @@ legend('share-btn','Gera um link para compartilhar este template com as cores e 
 legend('hide-btn','Esconde a tool-bar');
 
 calculateLightness()
-updateColorsGlobalArray()
 updateColorsQueryParam()
 updateCSSColorVar()

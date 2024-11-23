@@ -60,8 +60,9 @@ function getColors(){
 }
 
 let colorsGlobalArray = ['%23000005','%23fbfbfe','%232f27ce','%23dedcff','%23433cff'];
-colorsGlobalArray = getColors()
-
+if (getColors().length){
+    colorsGlobalArray = getColors()
+}
 //função que atualiza os parametro do Colors
 function updateColorsQueryParam(){
     let res = `${colorsGlobalArray[0]}-${colorsGlobalArray[1]}-${colorsGlobalArray[2]}-${colorsGlobalArray[3]}-${colorsGlobalArray[4]}`
@@ -388,7 +389,7 @@ function redo(){
 }
 
 //change fonts function
-const fetchJson = async url => {
+async function fetchJson(url){
     const response = await fetch(url)
     return response.json()
 }

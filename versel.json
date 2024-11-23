@@ -1,9 +1,0 @@
-{
-    "version": 2,
-    "builds": [{"src": "./index.js","use": "@vercel/node"}],
-    "routes": [
-     {"src": "/(.*)","dest": "/api/index.js"},
-     {"src": "/key","dest": "/key" },
-     {"src": "/secondTemplate","dest": "/secondTemplate" }
-    ]
- }

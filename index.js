@@ -21,8 +21,14 @@ app.get('/secondTemplate/secondTemplate.css/assets/img/:id',(req,res)=>{
     res.sendFile(path.join(__dirname,`public/assets/img/${id}`));
 })
 
-app.get('/key',(req,res)=>{
+app.get('/popularFonts',(req,res)=>{
     fetch(`https://www.googleapis.com/webfonts/v1/webfonts?key=${API_KEY}&sort=popularity`)
+        .then((response) => response.json())
+        .then((json) => res.send(json));
+})
+
+app.get('/searchFont/:family',(req,res)=>{
+    fetch(`https://www.googleapis.com/webfonts/v1/webfonts?key=${API_KEY}&family=${req.params.family}`)
         .then((response) => response.json())
         .then((json) => res.send(json));
 })

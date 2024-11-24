@@ -52,7 +52,6 @@ html {
 }
 
 #tool-bar{
-    
     align-items: center;
     justify-content: center;
     background: var(--ToolBar);   
@@ -123,6 +122,10 @@ html {
 #rand-btn{
     max-width: fit-content;
 }
+#share-btn{
+    position: relative;
+}
+
 
 .copy-msg{
     position: absolute;
@@ -177,7 +180,8 @@ html {
     bottom: 70px;
     left: 47vw;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     gap: 2px;
     font-size: 16px;
     width: 400px;
@@ -186,6 +190,24 @@ html {
     border-radius: 6px;
     border: 2px solid var(--ToolBar);
     background-color: var(--ToolBarAccent);
+}
+.font-selection-input{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.font-selection-input input{
+    border-radius: 6px;
+    border: 2px solid var(--ToolBar);
+    background-color: var(--ToolBarAccent);
+    padding: 5px;
+}
+.font-selection-display{
+    display: flex;
+    justify-content: center;
+    width: 400px;
+    height: 250px;
+    padding: 5px;
 }
 .font-display{
     width: 200px;
@@ -256,6 +278,34 @@ html {
     background-color: var(--Accent);
     color: var(--ColorPickerText4);
 }
+#color-inputs{
+    position: relative;
+}
+#font_color_input{
+    position: absolute;
+    left: 10vw;
+    top: 10vh;
+}
+#background_color_input{
+    position: absolute;
+    left: 20vw;
+    top: 10vh;
+}
+#primary_input{
+    position: absolute;
+    left: 30vw;
+    top: 10vh;
+}
+#secondary_input{
+    position: absolute;
+    left: 40vw;
+    top: 10vh;
+}
+#accent_input{
+    position: absolute;
+    left: 50vw;
+    top: 10vh;
+}
 
 /* normal btns */
 #light-dark svg{
@@ -293,6 +343,9 @@ html {
 
 .hidden{
     display: none;
+}
+.faded{
+    opacity: 0.5;
 }
 
 /* header */
@@ -464,7 +517,4 @@ main{
     letter-spacing: -9.213px;
 }
 
-#share-btn{
-    position: relative;
-}
 

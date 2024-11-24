@@ -19,8 +19,9 @@ function abrirSeletorCor(idBotao, idInputCor) {
     const botao = document.getElementById(idBotao);
     var key = botao.innerText;
     // Simula o clique no input de cor
-    inputCor.click();
-    inputCor.addEventListener("input", function() {
+    inputCor.click(); 
+    // inputCor.classList.toggle("hidden")
+    inputCor.addEventListener("change", function() {
         var color = inputCor.value;
         //joga na url a cor selecionada
         updateColorsGlobalArray(key, `${color}`);
@@ -335,15 +336,10 @@ function calculateLightness(){
 
 // dark/light function
 function darkLight(){
-    console.log('1')
-    let colors = getColors();
-    let text = hexToHSL(colors[0])
-    let background = hexToHSL(colors[1])
-    let temp = text[2]
-    text[2] = background[2]
-    background[2] = temp
-    updateColorsGlobalArray('Text', hslToHex(text[0],text[1],text[2]))
-    updateColorsGlobalArray('Background', hslToHex(background[0],background[1],background[2]))
+    let temp = colorsGlobalArray[0]
+    colorsGlobalArray[0] = colorsGlobalArray[1] 
+    colorsGlobalArray[1] = temp
+    updateColorsQueryParam()
     updateCSSColorVar()
 }
 
@@ -368,24 +364,24 @@ function showCopyMsg(){
     element.classList.toggle("hidden");
 }
   
-function undo() {
-    if (history.length>2){
+async function undo() {
+    if (navigation.canGoBack){
         var element = document.getElementById("redo-btn");
-        element.classList.remove("hidden");
+        element.classList.remove("faded");
     }
+    await navigation.back().finished;
     colorsGlobalArray = getColors()
     updateCSSColorVar()
-    history.back()
 }
 
-function redo(){
-    if (!history.forward){
+async function redo(){
+    if (!navigation.canGoForward){
         var element = document.getElementById("redo-btn");
-        element.classList.add("hidden");
+        element.classList.add("faded");
     }
+    await navigation.forward().finished;
     colorsGlobalArray = getColors()
     updateCSSColorVar()
-    history.forward()
 }
 
 //change fonts function
@@ -397,26 +393,22 @@ async function fetchJson(url){
 async function getVariantsList(family){
     const variants = document.getElementById('font-variants')
     variants.innerHTML = ''
-    const data = await fetchJson('/key')
-    for (let i = 100; i >= 0 ; i--){    
-        if(data.items[i].family==`${family}`){
-            for (const key in data.items[i].variants){
-                if (data.items[i].variants[key]){
-                    let li = document.createElement('li')
-                    li.innerHTML = `<button onclick="changeFont('${data.items[i].family}','${data.items[i].variants[key]}')">${data.items[i].variants[key]}</button>`
-                    variants.appendChild(li)
-                }
-            }
-            return 0;
+    const data = await fetchJson(`/searchFont/${family}`) 
+    for (const key in data.items[0].variants){
+        if (data.items[0].variants[key]){
+            let li = document.createElement('li')
+            li.innerHTML = `<button onclick="changeFont('${data.items[0].family}','${data.items[0].variants[key]}')">${data.items[0].variants[key]}</button>`
+            variants.appendChild(li)
         }
     }
+    return 0;
 }
 
 async function getFontsList(){
     
     var element = document.getElementById("font-selection")
     element.classList.toggle("hidden")
-    const data = await fetchJson('/key')
+    const data = await fetchJson('/popularFonts')
     // console.log(data)
     const display = document.getElementById('font-display')
     for (let i = 100; i >= 0 ; i--){
@@ -438,6 +430,13 @@ function changeFont(family,variant){
     head.appendChild(link);
 }
 
+async function searchFonts(){
+    const family = document.getElementById("font-search-input").value
+    console.log(family)
+    const data = await fetchJson(`/searchFont/${family}`)
+    console.log(data)
+    getVariantsList(family)
+}
 
 // second template slider
 function initializeSlider(){
@@ -487,13 +486,13 @@ function legend(btn_name, message){
     });
 }
 
-legend('light-dark','Alterna entre modo claro e escuro');
-legend('rand-div','Altera as cores da página com base no tipo selecionado');
-legend('undo-btn','Volta a ação');
-legend('redo-btn','Retorna à alteração');
-legend('fonts-btn','Troca a fonte');
-legend('share-btn','Gera um link para compartilhar este template com as cores e fontes selecionadas');
-legend('hide-btn','Esconde a tool-bar');
+// legend('light-dark','Alterna entre modo claro e escuro');
+// legend('rand-div','Altera as cores da página com base no tipo selecionado');
+// legend('undo-btn','Volta a ação');
+// legend('redo-btn','Retorna à alteração');
+// legend('fonts-btn','Troca a fonte');
+// legend('share-btn','Gera um link para compartilhar este template com as cores e fontes selecionadas');
+// legend('hide-btn','Esconde a tool-bar');
 
 calculateLightness()
 updateColorsQueryParam()

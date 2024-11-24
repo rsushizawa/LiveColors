@@ -22,11 +22,15 @@
         </div>
         <div id="tool-bar-hide" class="tool-bar-hide">
             <div id="msgDiv"></div>
-            <button class="normal-btn btn" id="template-btn">
+            <button class="normal-btn btn" id="template-btn" onclick="showTemplate()">
                 <svg viewBox="0 0 34 33" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M3.47708 32.2172C2.56653 32.2172 1.78706 31.9037 1.13864 31.2768C0.490224 30.6498 0.166016 29.8961 0.166016 29.0157V14.6086C0.166016 13.7282 0.490224 12.9745 1.13864 12.3475C1.78706 11.7205 2.56653 11.407 3.47708 11.407H6.78814V3.40311C6.78814 2.52268 7.11234 1.76897 7.76076 1.142C8.40918 0.515025 9.18865 0.201538 10.0992 0.201538H29.9656C30.8761 0.201538 31.6556 0.515025 32.304 1.142C32.9524 1.76897 33.2766 2.52268 33.2766 3.40311V17.8102C33.2766 18.6906 32.9524 19.4443 32.304 20.0713C31.6556 20.6982 30.8761 21.0117 29.9656 21.0117H26.6545V29.0157C26.6545 29.8961 26.3303 30.6498 25.6819 31.2768C25.0335 31.9037 24.254 32.2172 23.3434 32.2172H3.47708ZM3.47708 29.0157H23.3434V17.8102H3.47708V29.0157ZM26.6545 17.8102H29.9656V6.60468H10.0992V11.407H23.3434C24.254 11.407 25.0335 11.7205 25.6819 12.3475C26.3303 12.9745 26.6545 13.7282 26.6545 14.6086V17.8102Z" fill="var(--Text)"/>
                     </svg>
             </button>
+            <div class="template-change hidden" id="templateChange">
+                <button class="template-change-btn" onclick="changeToFirstTemplate()">Landing Page</button>
+                <button class="template-change-btn" onclick="changeToSecondTemplate()">Store Page</button>
+            </div>
             <button class="color-picker btn" id="font_color" onclick="abrirSeletorCor('font_color', 'font_color_input')">Text</button>
             <button class="color-picker btn" id="background_color" style="width: 159px;" onclick="abrirSeletorCor('background_color', 'background_color_input')">Background</button>
             <button class="color-picker btn" id="primary_color" onclick="abrirSeletorCor('primary_color', 'primary_color_input')">Primary</button>
@@ -81,7 +85,10 @@
                 <div class="font-selection-input">
                     <p>Search Google Fonts: </p>
                     <input type="text" id="font-search-input">
-                    <button onclick="searchFonts()">ffff</button>
+                    <button onclick="searchFonts()"><svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8.9636 14.2808C10.6303 14.2808 12.0469 13.6974 13.2136 12.5308C14.3803 11.3641 14.9636 9.94743 14.9636 8.28076C14.9636 6.6141 14.3803 5.19743 13.2136 4.03076C12.0469 2.86409 10.6303 2.28076 8.9636 2.28076C7.29693 2.28076 5.88027 2.86409 4.7136 4.03076C3.54693 5.19743 2.9636 6.6141 2.9636 8.28076C2.9636 9.94743 3.54693 11.3641 4.7136 12.5308C5.88027 13.6974 7.29693 14.2808 8.9636 14.2808ZM8.9636 16.2808C6.73027 16.2808 4.8386 15.5058 3.2886 13.9558C1.7386 12.4058 0.9636 10.5141 0.9636 8.28076C0.9636 6.04743 1.7386 4.15576 3.2886 2.60576C4.8386 1.05576 6.73027 0.280762 8.9636 0.280762C11.1969 0.280762 13.0886 1.05576 14.6386 2.60576C16.1886 4.15576 16.9636 6.04743 16.9636 8.28076C16.9636 9.2141 16.8178 10.0933 16.5261 10.9183C16.2344 11.7433 15.8219 12.4974 15.2886 13.1808L20.9636 18.8808L19.5636 20.2808L13.8636 14.6058C13.1803 15.1391 12.4261 15.5516 11.6011 15.8433C10.7761 16.1349 9.89693 16.2808 8.9636 16.2808Z" fill="var(--Text)"/>
+                        </svg>
+                        </button>
                 </div>
                 <div class="font-selection-display">
                     <div class="font-display"><ul id="font-display"></ul></div>

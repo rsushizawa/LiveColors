@@ -78,6 +78,8 @@ html {
     background: #363636;
     color: #fff;
 }
+
+
 .btn{
     border: 2px solid var(--ToolBar);
     background: var(--ToolBarAccent);
@@ -177,7 +179,7 @@ html {
 .font-selection{
     position: absolute;
     z-index: 2;
-    bottom: 70px;
+    bottom: 75px;
     left: 47vw;
     display: flex;
     flex-direction: column;
@@ -256,7 +258,49 @@ html {
     border: 2px solid var(--ToolBar);
     background-color: var(--ToolBarAccent);
 }
-
+.font-selection-input button{
+    width: 5px;
+    height: 5px;
+    border-radius: 6px;
+    border: 2px solid var(--ToolBar);
+    background-color: var(--ToolBarAccent);
+}
+.font-display button:hover{
+    background-color: var(--ToolBar);
+}
+.font-variants button:hover{
+    background-color: var(--ToolBar);
+}
+.font-selection-input button:hover{
+    background-color: var(--ToolBar);
+}
+/* template-change */
+.template-change{
+    position: absolute;
+    padding: 5px;
+    width: 100px;
+    height: 65px;
+    left: 1vw;
+    bottom: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    border-radius: 6px;
+    border: 2px solid var(--ToolBar);
+    background-color: var(--ToolBarAccent);
+}
+.template-change-btn{
+    padding: 5px;
+    width: 100px;
+    border-radius: 6px;
+    border: 2px solid var(--ToolBar);
+    background-color: var(--ToolBarAccent);
+}
+.template-change-btn:hover{
+    background-color: var(--ToolBar);
+}
 /* color-picker btns */
 #font_color{
     background-color: var(--Text);

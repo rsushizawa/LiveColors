@@ -471,6 +471,22 @@ function nextSlide(){
     showSlide(slideIndex);
 }
 
+function showTemplate(){
+    var element = document.getElementById("templateChange")
+    element.classList.toggle("hidden")
+}
+
+function changeToSecondTemplate(){
+    window.location.replace(
+        "https://livecolors.onrender.com/secondTemplate",
+      );
+}
+function changeToFirstTemplate(){
+    window.location.replace(
+        "https://livecolors.onrender.com",
+      );
+}
+
 function legend(btn_name, message){
     var btn = document.getElementById(btn_name);
     var msgDiv = document.getElementById("msgDiv");

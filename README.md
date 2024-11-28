@@ -1,4 +1,4 @@
-# LiveColors
+![image](https://github.com/user-attachments/assets/0e6b2a4e-1f75-44cd-a043-925af3d849da)# LiveColors
 
 Live Page: https://livecolors.onrender.com/
 
@@ -68,3 +68,27 @@ Para trocar a fonte, basta clicar neste botão:
 ![image.png](https://i.ibb.co/J77HpWD/image.png)
 
 Ao acessá-lo, você terá uma coletânea de fontes disponíveis para você escolher e encaixar ao seu estilo.
+
+### Refazer e desfazer mudanças recém alteradas
+
+Quando querer visitar mudanças passadas, o usuário poderá realizar isso clicando neste botão:
+
+![image.png](https://i.ibb.co/QCCr7c0/image.png)
+
+Ao ser apertado, irá aparecer um novo botão cuja função é para refazer o que o usuário desfez.
+
+![image.png](https://i.ibb.co/02p0dxf/image.png)
+
+### Compartilhar alterações
+
+Se o usuário quiser compartilhar o estilo na qual ele criou, basta ele clicar nesse botão. Ao ser clicado, irá aparecer uma imagem de pop-up indicando que a URL do site foi copiado para a área de transferência do usuário. 
+
+![image.png](https://i.ibb.co/C6QVxrX/image.png)
+
+### Visibilidade da barra de ferramentas
+
+Caso a barra de ferramentas atrapalhe na visualização do protótipo do site, basta clicar nesse botão abaixo.
+
+![image.png](https://i.ibb.co/RQxPsVn/image.png)
+
+Ao ser ativado, a barra de ferramentas irá desaparecer, sobrando apenas o botão acima. Caso queira alterar novamente o site, basta clicar no botão novamente para que o botão reapareça.

@@ -1,4 +1,5 @@
-![image](https://github.com/user-attachments/assets/0e6b2a4e-1f75-44cd-a043-925af3d849da)# LiveColors
+![image](https://i.ibb.co/9W7KTQp/image.png)
+# LiveColors
 
 Live Page: https://livecolors.onrender.com/
 

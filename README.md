@@ -1,7 +1,7 @@
 # LiveColors
 ![image](https://i.ibb.co/9W7KTQp/image.png)
 
-Live Page: https://livecolors.onrender.com/
+Live Page: https://livecolors.onrender.com/  (Offline)
 
 # Integrantes
 
